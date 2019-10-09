@@ -1,0 +1,63 @@
+.setup-wizard {
+  .page-title {
+    font-size: $pageTitleSize;
+    font-weight: $pageTitleWeight;
+  }
+
+  form {
+    margin-top: 105px;
+
+    .form-group {
+      display: flex;
+
+      input {
+        border-radius: 4px;
+        border: #ababab solid 1px;
+        font-size: 24px;
+        font-weight: 600;
+        padding: 3px 10px;
+
+        &::-webkit-input-placeholder {
+          color: #dadada;
+          font-style: italic !important;
+        }
+
+        &[type="submit"] {
+          width: unset !important;
+          font-size: 28px;
+          background-color: $secondaryBtnColor;
+          color: $fontColorWhite;
+          padding: 6px 60px;
+          border: unset;
+          outline: unset !important;
+
+          &:hover {
+            background-color: #88969d;
+          }
+
+          &:active {
+            background-color: $secondaryBtnColor;
+          }
+        }
+      }
+    }
+  }
+
+  .welcome {
+    form {
+      .form-group {
+        margin-bottom: 75px;
+
+        input {
+          max-width: 540px;
+          width: -webkit-fill-available;
+          margin: auto;
+
+          &[type="submit"] {
+            margin-top: 100px;
+          }
+        }
+      }
+    }
+  }
+}

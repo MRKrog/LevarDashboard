@@ -1,0 +1,41 @@
+.sidebar {
+  min-width: $sidebarWidth;
+  height: 100%;
+  background-color: $sidebarAccentColor;
+  color: $fontColorWhite;
+
+  .header {
+    height: $sidebarHeaderHeight;
+    display: flex;
+
+    .logo {
+      width: 100%;
+
+      img {
+        width: $logoWidth;
+        margin-left: 10px;
+      }
+    }
+
+    .profile {
+      min-width: $sidebarProfileWidth;
+      background-color: $secondaryBtnColor;
+    }
+  }
+
+  .menu-content {
+    height: $menuContentHeight;
+    background-color: $sidebarBaseColor;
+  }
+
+  .grey-space {
+    height: calc(
+      100% - #{$sidebarHeaderHeight} - #{$menuContentHeight} - #{$addProductHeight}
+    );
+  }
+
+  .add-product {
+    height: $addProductHeight;
+    background-color: $sidebarBaseColor;
+  }
+}

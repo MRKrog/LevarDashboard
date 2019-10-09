@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $mainColor !important;
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 400 !important;
+}
+
+.app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+
+  .main-container {
+    width: 100%;
+
+    .setup-wizard {
+      .container {
+        margin-top: 70px;
+
+        @media (min-width: 992px) {
+          max-width: 900px !important;
+        }
+      }
+    }
+  }
+}

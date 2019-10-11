@@ -1,5 +1,7 @@
 import Welcome from "./welcome";
 import BusinessInfo from "./business-info";
+import Integration from "./integration";
+import Final from "./final";
 
 const routes = [
   {
@@ -11,6 +13,16 @@ const routes = [
     path: "/business-info",
     name: "BusinessInfo",
     component: BusinessInfo
+  },
+  {
+    path: "/integration",
+    name: "Integration",
+    component: Integration
+  },
+  {
+    path: "/final",
+    name: "Final",
+    component: Final
   },
   {
     redirect: true,

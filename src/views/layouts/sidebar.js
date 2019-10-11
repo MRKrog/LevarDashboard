@@ -7,10 +7,10 @@ export default class Sidebar extends Component {
         <div className="header">
           <div className="logo">
             <Link to="/">
-                <img
+              <img
                 src={require("../../assets/images/levarlogo_white.png")}
                 alt="logo"
-                ></img>
+              ></img>
             </Link>
           </div>
           <div className="profile"></div>

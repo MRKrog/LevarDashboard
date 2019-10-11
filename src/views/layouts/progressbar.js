@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router";
+
 class Progressbar extends Component {
   constructor(props) {
     super(props);
@@ -10,8 +10,8 @@ class Progressbar extends Component {
     this.routes = [
       { url: "/setup-wizard/welcome", step: 1 },
       { url: "/setup-wizard/business-info", step: 2 },
-      { url: "/setup-wizard/integration1", step: 3 },
-      { url: "/setup-wizard/integration2", step: 4 }
+      { url: "/setup-wizard/integration", step: 3 },
+      { url: "/setup-wizard/final", step: 4 }
     ];
 
     this.setStep = this.setStep.bind(this);

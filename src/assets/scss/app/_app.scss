@@ -13,14 +13,104 @@ body {
 
   .main-container {
     width: 100%;
+  }
+}
 
-    .setup-wizard {
-      .container {
-        margin-top: 70px;
+form {
+  .form-group {
+    margin-bottom: unset;
 
-        @media (min-width: 992px) {
-          max-width: 900px !important;
+    input {
+      border-radius: 4px;
+      border: #ababab solid 1px;
+      font-size: 24px;
+      font-weight: 600;
+      padding: 3px 10px;
+      width: 100%;
+      height: unset;
+      line-height: inherit;
+
+      &::-webkit-input-placeholder {
+        color: #dadada;
+        font-style: italic !important;
+      }
+    }
+
+    .form-select {
+      width: 100%;
+      height: 105px;
+
+      select {
+        background: linear-gradient(45deg, transparent 50%, #555 50%),
+          linear-gradient(135deg, #555 50%, transparent 50%), #fff;
+        background-position: calc(100% - 21px) calc(1em - 3px),
+          calc(100% - 16px) calc(1em - 3px), 100% 0;
+        background-size: 5px 5px, 5px 5px, 2.5em 2.5em;
+        background-repeat: no-repeat;
+        outline: unset;
+        line-height: 1.5em;
+        padding: 0.5em 3.5em 0.5em 1em;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border-radius: 4px;
+        border: #ababab solid 1px;
+        font-size: 24px;
+        font-weight: 600;
+        padding: 3px 10px;
+        width: 100%;
+        height: 44px;
+
+        line-height: inherit;
+
+        &.placeholder {
+          color: #dadada;
+          font-style: italic !important;
         }
+        option {
+          color: #000;
+          font-style: normal !important;
+          font-size: 16px;
+          font-weight: 500;
+        }
+      }
+    }
+
+    .srv-validation-message {
+      color: #dc3545 !important;
+      margin-top: 5px;
+      margin-left: 3px;
+      font-size: 17px;
+      font-weight: 500;
+    }
+  }
+
+  .submit-button {
+    text-align: right;
+    margin-top: 60px;
+    @media (max-width: 768px) {
+      text-align: center;
+    }
+
+    input[type="submit"] {
+      font-weight: 600;
+      width: unset !important;
+      font-size: 28px;
+      background-color: $secondaryBtnColor;
+      color: $fontColorWhite;
+      padding: 6px 60px;
+      border: unset;
+      border-radius: 4px;
+      outline: unset !important;
+
+      &:hover {
+        background-color: #88969d;
+      }
+
+      &:active {
+        background-color: $secondaryBtnColor;
       }
     }
   }

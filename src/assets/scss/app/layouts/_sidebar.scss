@@ -38,4 +38,12 @@
     height: $addProductHeight;
     background-color: $sidebarBaseColor;
   }
+
+  &.sidebar-auth {
+    width: 80%;
+    background-color: $sidebarBaseColor;
+    .header {
+      background-color: $sidebarAccentColor;
+    }
+  }
 }

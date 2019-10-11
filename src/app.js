@@ -8,7 +8,6 @@ import {
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import routes from "./routes";
-import Sidebar from "./views/layouts/sidebar";
 import Container from "./views/container";
 
 class App extends Component {
@@ -17,22 +16,19 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Container>
-            <Sidebar />
-            <div className="main-container">
-              <Switch>
-                {routes.map((prop, key) => {
-                  if (prop.redirect)
-                    return <Redirect from={prop.path} to={prop.to} key={key} />;
-                  return (
-                    <Route
-                      path={prop.path}
-                      key={key}
-                      render={props => <prop.component {...props} />}
-                    />
-                  );
-                })}
-              </Switch>
-            </div>
+            <Switch>
+              {routes.map((prop, key) => {
+                if (prop.redirect)
+                  return <Redirect from={prop.path} to={prop.to} key={key} />;
+                return (
+                  <Route
+                    path={prop.path}
+                    key={key}
+                    render={props => <prop.component {...props} />}
+                  />
+                );
+              })}
+            </Switch>
           </Container>
         </Router>
       </Provider>

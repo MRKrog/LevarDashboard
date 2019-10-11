@@ -1,7 +1,8 @@
 .progress-bar {
   height: $progressbarHeight;
   background-color: $progressbarColor !important;
-  width: 0%;
+  width: 0%;  
+  position: relative;
 
   &.step1 {
     width: 25% !important;
@@ -9,5 +10,13 @@
 
   &.step2 {
     width: 50% !important;
+  }
+
+  &.step3 {
+    width: 75% !important;
+  }
+
+  &.step4 {
+    width: 100% !important;
   }
 }

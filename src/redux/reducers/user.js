@@ -4,16 +4,16 @@ const initialState = {
   user: {
     id: null,
     account_id: "",
-    email: '',
+    email: "",
     accepts_marketing: null,
-    name: '',
-    address: '',
-    zip: '',
-    state: '',
-    country: '',
-    business_name: '',
-    website_url: '',
-    phone_number: '',
+    name: "",
+    address: "",
+    zip: "",
+    state: "",
+    country: "",
+    business_name: "",
+    website_url: "",
+    phone_number: ""
   }
 };
 

@@ -3,8 +3,8 @@ import SimpleReactValidator from "simple-react-validator";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/dist/style.css";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
-import { updateUser } from '../../redux/actions/user';
-import { connect } from 'react-redux';
+import { updateUser } from "../../redux/actions/user";
+import { connect } from "react-redux";
 
 class BusinessInfo extends Component {
   constructor(props) {
@@ -86,7 +86,9 @@ class BusinessInfo extends Component {
                 name="business address"
                 placeholder="Business Address"
                 value={this.state.address}
-                onChange={event => this.handleValueChange('address', event.target.value)}
+                onChange={event =>
+                  this.handleValueChange("address", event.target.value)
+                }
                 onBlur={() => this.validator.showMessageFor("business address")}
               />
               {this.validator.message(
@@ -153,8 +155,11 @@ class BusinessInfo extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  user: state.user.user,
+const mapStateToProps = state => ({
+  user: state.user.user
 });
 
-export default connect(mapStateToProps, { updateUser })(BusinessInfo)
+export default connect(
+  mapStateToProps,
+  { updateUser }
+)(BusinessInfo);

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SimpleReactValidator from "simple-react-validator";
-import { updateUser } from '../../redux/actions/user';
-import { connect } from 'react-redux';
+import { updateUser } from "../../redux/actions/user";
+import { connect } from "react-redux";
 
 class Welcome extends Component {
   constructor(props) {
@@ -86,4 +86,7 @@ class Welcome extends Component {
   }
 }
 
-export default connect(null, { updateUser })(Welcome)
+export default connect(
+  null,
+  { updateUser }
+)(Welcome);

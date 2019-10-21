@@ -15,7 +15,20 @@ export default class Sidebar extends Component {
           </div>
           <div className="profile"></div>
         </div>
-        <div className="menu-content"></div>
+        <div className="menu-content">
+          <ul>
+            <li>
+              <Link to="/dashboard/overview">
+                Overview
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard/products">
+                Products
+              </Link>
+            </li>
+          </ul>
+        </div>
         <div className="grey-space"></div>
         <div className="add-product"></div>
       </div>

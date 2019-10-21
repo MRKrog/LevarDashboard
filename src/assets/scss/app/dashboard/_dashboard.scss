@@ -1,0 +1,58 @@
+.Dashboard {
+  // background: #000;
+
+  .products {
+
+    .dashboard-container {
+      padding: 10px;
+    }
+
+    .thumbnail {
+      max-width: 50px;
+    }
+  }
+
+
+
+}
+
+
+//
+// { id: 'title', numeric: false, disablePadding: true, label: 'Title' },
+// { id: 'variant', numeric: true, disablePadding: false, label: 'Variant' },
+// { id: 'vendor', numeric: true, disablePadding: false, label: 'Vendor' },
+// { id: 'type', numeric: true, disablePadding: false, label: 'Type' },
+// { id: 'sales', numeric: true, disablePadding: false, label: 'Sales Rank' },
+// { id: 'returns', numeric: true, disablePadding: false, label: 'Returns Rank' },
+// { id: '3d', numeric: true, disablePadding: false, label: '3D' },
+
+
+// <Toolbar
+//   className={clsx(classes.root, {
+//     [classes.highlight]: numSelected > 0,
+//   })}
+// >
+//   {numSelected > 0 ? (
+//     <Typography className={classes.title} color="inherit" variant="subtitle1">
+//       {numSelected} selected
+//     </Typography>
+//   ) : (
+//     <Typography className={classes.title} variant="h6" id="tableTitle">
+//       Store Name Products
+//     </Typography>
+//   )}
+//
+//   {numSelected > 0 ? (
+//     <Tooltip title="Delete">
+//       <IconButton aria-label="delete">
+//
+//       </IconButton>
+//     </Tooltip>
+//   ) : (
+//     <Tooltip title="Filter list">
+//       <IconButton aria-label="filter list">
+//         <FilterListIcon />
+//       </IconButton>
+//     </Tooltip>
+//   )}
+// </Toolbar>

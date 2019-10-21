@@ -8,15 +8,15 @@ export default class Final extends Component {
       store_url: ""
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
 
     this.validator = new SimpleReactValidator({ autoForceUpdate: this });
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
-    // this.props.history.push("/setup-wizard/final");
+    this.props.history.push("/dashboard");
   }
 
   handleInputChange(event) {

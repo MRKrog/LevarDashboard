@@ -1,5 +1,6 @@
 import SetupWizard from "./views/setup-wizard";
 import Login from "./views/auth/login";
+import Dashboard from "./views/dashboard";
 
 const routes = [
     {
@@ -13,11 +14,17 @@ const routes = [
         name: "Login",
         dashboard: false,
         component: Login
-    }, {
-        redirect: true,
-        path: "/",
-        to: "/login",
-        name: "login"
+    },
+    {
+      path: "/dashboard",
+      name: "Dashboard",
+      component: Dashboard
+    },
+    {
+      redirect: true,
+      path: "/",
+      to: "/login",
+      name: "login"
     },
 ];
 

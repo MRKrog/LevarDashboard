@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="15px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>plus</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="30" height="30"></rect>
+    </defs>
+    <g id="dashboard3.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dashboard-Shell---Products" transform="translate(-1786.000000, -680.000000)">
+            <g id="Products" transform="translate(391.000000, 74.000000)">
+                <g id="addproductButton-Copy" transform="translate(1361.000000, 588.000000)">
+                    <g id="Fill-38-+-Fill-39-+-Fill-40" transform="translate(34.000000, 18.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Background"></g>
+                        <path d="M15,29.9382353 C6.76323529,29.9382353 0.0617647059,23.2367647 0.0617647059,15 C0.0617647059,6.76323529 6.76323529,0.0617647059 15,0.0617647059 C23.2367647,0.0617647059 29.9382353,6.76323529 29.9382353,15 C29.9382353,23.2367647 23.2367647,29.9382353 15,29.9382353 L15,29.9382353 Z M15,1.70294118 C7.66764706,1.70294118 1.70294118,7.66764706 1.70294118,15 C1.70294118,22.3323529 7.66764706,28.2970588 15,28.2970588 C22.3323529,28.2970588 28.2970588,22.3323529 28.2970588,15 C28.2970588,7.66764706 22.3323529,1.70294118 15,1.70294118 L15,1.70294118 Z" id="Fill-38" fill="#FFFFFF" fill-rule="evenodd" mask="url(#mask-2)"></path>
+                        <polygon id="Fill-39" fill="#FFFFFF" fill-rule="evenodd" mask="url(#mask-2)" points="7.05882353 14.1176471 22.9411765 14.1176471 22.9411765 15.8823529 7.05882353 15.8823529"></polygon>
+                        <polygon id="Fill-40" fill="#FFFFFF" fill-rule="evenodd" mask="url(#mask-2)" points="14.1176471 7.05882353 15.8823529 7.05882353 15.8823529 22.9411765 14.1176471 22.9411765"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

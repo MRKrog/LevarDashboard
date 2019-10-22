@@ -5,7 +5,7 @@ import Loading from "../../components/Loading/Loading";
 import { connect } from "react-redux";
 import { setLoading } from "../../redux/actions/loading";
 
-import { fetchData } from "../../utility/fetchData.js";
+// import { fetchData } from "../../utility/fetchData.js";
 
 
 class Products extends Component {
@@ -13,21 +13,24 @@ class Products extends Component {
   componentDidMount() {
     // const { setLoading } = this.props;
     console.log('product component loaded');
-    console.log("Before", this.props.loading);
-    this.props.setLoading(true);
-    console.log("After", this.props.loading);
+    // this.props.setLoading(true);
   }
 
   getAllOrders = () => {
-    const url = '';
-    const data = fetchData(url)
+    // const url = '';
+    // const data = fetchData(url)
   }
 
   render() {
+    const { loading } = this.props;
+
     return (
       <div className="products">
-        <Loading />
-        <ProductsTable />
+        {
+          loading ? (
+            <Loading />
+          ) : <ProductsTable />
+        }
       </div>
     );
   }

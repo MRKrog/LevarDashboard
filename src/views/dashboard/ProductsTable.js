@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import clsx from 'clsx';
-import { lighten, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
+
+import ButtonStatus from './Products/ButtonStatus/ButtonStatus';
+// import { setStatus3D } from './Products/utilities'
+
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -12,32 +15,36 @@ import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-// import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
+import FilterListIcon from '@material-ui/icons/FilterList';
+
+
+// import clsx from 'clsx';
+// import Checkbox from '@material-ui/core/Checkbox';
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import Switch from '@material-ui/core/Switch';
 // import DeleteIcon from '@material-ui/icons/Delete';
-import FilterListIcon from '@material-ui/icons/FilterList';
+
 
 function createData(title, variant, vendor, type, sales, returns, threed) {
   return { title, variant, vendor, type, sales, returns, threed };
 }
 
 const rows = [
-  createData('Item 1', 'Os/a', 'Adidas', 'acc.', 1, 50, 1),
-  createData('Item 2', 'Os/a', 'Adidas', 'acc.', 10, 11, 1),
+  createData('Item 1', 'Os/a', 'Adidas', 'acc.', 1, 50, 0),
+  createData('Item 2', 'Os/a', 'Adidas', 'acc.', 10, 11, 2),
   createData('Item 3', 'Os/a', 'Adidas', 'acc.', 3, 23, 1),
-  createData('Item 4', 'Os/a', 'Adidas', 'acc.', 4, 43, 1),
-  createData('Item 5', 'Os/a', 'Adidas', 'acc.', 76, 55, 1),
-  createData('Item 6', 'Os/a', 'Adidas', 'acc.', 45, 51, 1),
+  createData('Item 4', 'Os/a', 'Adidas', 'acc.', 4, 43, 0),
+  createData('Item 5', 'Os/a', 'Adidas', 'acc.', 76, 55, 2),
+  createData('Item 6', 'Os/a', 'Adidas', 'acc.', 45, 51, 3),
   createData('Item 7', 'Os/a', 'Adidas', 'acc.', 34, 54, 1),
-  createData('Item 8', 'Os/a', 'Adidas', 'acc.', 3, 51, 1),
-  createData('Item 9', 'Os/a', 'Adidas', 'acc.', 6, 59, 1),
-  createData('Item 10', 'Os/a', 'Adidas', 'acc.', 87, 53, 1),
+  createData('Item 8', 'Os/a', 'Adidas', 'acc.', 3, 51, 0),
+  createData('Item 9', 'Os/a', 'Adidas', 'acc.', 6, 59, 2),
+  createData('Item 10', 'Os/a', 'Adidas', 'acc.', 87, 53, 3),
   createData('Item 11', 'Os/a', 'Adidas', 'acc.', 13, 45, 1),
-  createData('Item 12', 'Os/a', 'Adidas', 'acc.', 54, 65, 1),
-  createData('Item 13', 'Os/a', 'Adidas', 'acc.', 9, 56, 1),
+  createData('Item 12', 'Os/a', 'Adidas', 'acc.', 54, 65, 0),
+  createData('Item 13', 'Os/a', 'Adidas', 'acc.', 9, 56, 2),
 ];
 
 function desc(a, b, orderBy) {
@@ -76,7 +83,7 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-  const { classes, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+  const { classes, order, orderBy, onRequestSort } = props;
   const createSortHandler = property => event => {
     onRequestSort(event, property);
   };
@@ -116,30 +123,12 @@ function EnhancedTableHead(props) {
 
 EnhancedTableHead.propTypes = {
   classes: PropTypes.object.isRequired,
-  numSelected: PropTypes.number.isRequired,
+  // numSelected: PropTypes.number.isRequired,
   onRequestSort: PropTypes.func.isRequired,
   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
   orderBy: PropTypes.string.isRequired,
   rowCount: PropTypes.number.isRequired,
 };
-
-const useToolbarStyles = makeStyles(theme => ({
-  root: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(1),
-  },
-  highlight:
-    theme.palette.type === 'light'
-      ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-        }
-      : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
-        },
-}));
-
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -167,11 +156,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function EnhancedTable() {
+export default function ProductsTable() {
   const classes = useStyles();
-  const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('calories');
-  const [selected, setSelected] = React.useState([]);
+  const [order, setOrder] = React.useState('desc');
+  const [orderBy, setOrderBy] = React.useState('sales');
+  // const [selected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -211,7 +200,7 @@ export default function EnhancedTable() {
           >
             <EnhancedTableHead
               classes={classes}
-              numSelected={selected.length}
+              // numSelected={selected.length}
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
@@ -221,7 +210,6 @@ export default function EnhancedTable() {
               {stableSort(rows, getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
-
                   return (
                     <TableRow
                       tabIndex={-1}
@@ -236,7 +224,9 @@ export default function EnhancedTable() {
                       <TableCell>{row.type}</TableCell>
                       <TableCell>{row.sales} of 100</TableCell>
                       <TableCell>{row.returns} of 100</TableCell>
-                      <TableCell>{row.threed}</TableCell>
+                      <TableCell>
+                        <ButtonStatus status={row.threed} />
+                      </TableCell>
                     </TableRow>
                   );
                 })}

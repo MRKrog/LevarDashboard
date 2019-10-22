@@ -6,6 +6,29 @@
       position: relative;
       height: 100%;
 
+      tbody.MuiTableBody-root {
+        
+        tr.MuiTableRow-root:nth-child(even){
+          background: #efefef;
+        }
+
+        tr.MuiTableRow-root {
+          // td:nth-child(n) {}
+
+          // td:nth-child(even) {}
+
+        }
+      }
+
+
+      tbody tr td {
+        padding: 10px;
+      }
+
+      tbody tr td:last-child {
+        text-align: center;
+      }
+
       #productTableMain {
         width: 100%;
         padding: 1em;
@@ -15,6 +38,7 @@
           border-top-right-radius: 5px;
         }
 
+        /* Header Table */
         .tableHeaderTop {
           background: #66767d;
           border-top-left-radius: 5px;
@@ -26,16 +50,14 @@
             font-size: 2em;
             color: #fff;
           }
+        }
 
-          .MuiTableCell-head {
-            color: #fff;
-          }
-
-          .MuiTableHead-root {
-            // background: #66767d;
-            // border-bottom: #131313 solid 1px;
-          }
-
+        /* Sub Header Table Titles */
+        thead th {
+          color: #fff;
+          padding: 10px;
+          font-weight: 100;
+          font-size: 1em;
         }
 
         .makeStyles-tableWrapper-4 {

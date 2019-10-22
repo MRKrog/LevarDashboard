@@ -1,11 +1,17 @@
-
+/* Font Import */
 @import url("../fonts/Montserrat/Montserrat.css");
+
 @import "variables/variables";
 @import "app/app";
 
+/* Wizard Styles */
 @import "app/auth";
 @import "app/setupWizard";
 @import "app/layouts/sidebar";
 @import "app/layouts/progressbar";
 
+/* Components Styles */
+@import "components/loading";
+
+/* Dashboard Styles */
 @import "app/dashboard/dashboard";

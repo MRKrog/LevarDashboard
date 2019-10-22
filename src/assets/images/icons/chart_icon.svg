@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="57px" viewBox="0 0 36 57" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>chart_icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="dashboard3.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Dashboard---Overview" transform="translate(-37.000000, -343.000000)" stroke="#FFFFFF">
+            <g id="SidebarButtons">
+                <g transform="translate(0.000000, 181.000000)" id="Text_icons">
+                    <g>
+                        <g id="chart_icon" transform="translate(39.000000, 164.000000)">
+                            <g id="Path">
+                                <polygon stroke-width="2.6316" points="2.99942617 34.1830586 2.99942617 3.76759784 0 2 0 35.925129 29 53 29 49.4901892"></polygon>
+                                <path d="M4,4 L7,2" stroke-width="2.6316"></path>
+                                <path d="M1,2 L4,0" stroke-width="2.6316"></path>
+                                <path d="M14,11 L17,9" stroke-width="2.6316"></path>
+                                <path d="M14,17 L17,15" stroke-width="2.6316"></path>
+                                <polygon stroke-width="2.6316" points="15 17 4 10.6939799 4 5 15 11.3060201"></polygon>
+                                <polygon stroke-width="2.6316" points="22 31 4 20.6881382 4 15 22 25.3097807"></polygon>
+                                <polygon stroke-width="2.6316" points="28 46 3 30.9718666 3 25 28 40.0281334"></polygon>
+                                <path d="M6.5,12.89039 L6.5,12.10961" stroke-width="2.6316"></path>
+                                <polyline stroke-width="2.6316" points="28 45 28.0207573 45.0129773 32 47.4073492 32 51"></polyline>
+                                <polyline stroke-width="2.6316" points="30 49 5.99955929 35.0795144 4 33.9187603 4 4"></polyline>
+                                <path d="M6.5,22.89633 L6.5,22.10367" stroke-width="2.6316"></path>
+                                <polyline stroke-width="2.6316" points="7 3 7 1.80173398 4 0"></polyline>
+                                <polyline stroke-width="2.6316" points="7 3 18 9.30820955 18 15"></polyline>
+                                <polyline stroke-width="2.6316" points="7 13 25 23.3092247 25 29"></polyline>
+                                <polyline stroke-width="2.6316" points="32 44 32 38.0293754 7 23"></polyline>
+                                <path d="M22,26 L25,24" stroke-width="2.6316"></path>
+                                <path d="M22,31 L25,29" stroke-width="2.6316"></path>
+                                <path d="M28,40 L31,38" stroke-width="2.6316"></path>
+                                <path d="M28,45 L31,43" stroke-width="2.6316"></path>
+                                <path d="M29,49 L32,47" stroke-width="2.6316"></path>
+                                <path d="M29,53 L32,51" stroke-width="2.6316"></path>
+                                <path d="M7,3 L4,5" stroke-width="2.6316"></path>
+                                <path d="M4,15 L7,13" stroke-width="2.6316"></path>
+                                <path d="M4,25 L7,23" stroke-width="2.6316"></path>
+                                <path d="M4,34 L7,32" stroke-width="2.6316"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

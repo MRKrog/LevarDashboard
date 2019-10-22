@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="44px" viewBox="0 0 48 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>3Dpipeline_icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="dashboard3.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dashboard---Overview" transform="translate(-36.000000, -417.000000)" fill="#FFFFFF">
+            <g id="SidebarButtons">
+                <g transform="translate(0.000000, 181.000000)" id="Text_icons">
+                    <g>
+                        <g id="3Dpipeline_icon" transform="translate(36.000000, 236.000000)">
+                            <path d="M48,39.4968362 L38.6526512,34.0229036 L38.6526512,18.3163649 L25.2116688,10.436235 L25.2116688,0 L22.8373411,0 L22.8373411,10.436235 L9.34734834,18.3163649 L9.34734834,34.0750899 L0,39.4973479 L1.21182062,41.5958507 L10.559169,36.1219181 L24.0001513,44 L37.4411337,36.1219181 L46.7884825,41.5958507 L48,39.4968362 Z M35,19.47508 L24,26 L13,19.47508 L24,13 L35,19.47508 Z M25,28.3495 L36,22 L36,34.6505 L25,41 L25,28.3495 Z M12,22 L23,28.3495 L23,41 L12,34.6505 L12,22 Z"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

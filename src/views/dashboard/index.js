@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 import routes from "./routes";
 import Sidebar from "../layouts/sidebar";
-// import Progressbar from "../layouts/progressbar";
 
 class Dashboard extends Component {
   render() {
@@ -10,8 +9,8 @@ class Dashboard extends Component {
     return (
       <>
         <Sidebar />
-        <div className="main-container Dashboard">
-          <div className="container">
+        <div className="main-container dashboard">
+          <div className="table-container">
             <Switch>
               {routes.map((prop, key) => {
                 if (prop.redirect)

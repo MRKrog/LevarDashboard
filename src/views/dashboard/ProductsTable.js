@@ -138,40 +138,15 @@ const useToolbarStyles = makeStyles(theme => ({
           color: theme.palette.text.primary,
           backgroundColor: theme.palette.secondary.dark,
         },
-  title: {
-    flex: '1 1 100%',
-  },
 }));
 
-const EnhancedTableToolbar = props => {
-  const classes = useToolbarStyles();
-
-  return (
-    <Toolbar>
-      <Typography className={classes.title} variant="h6" id="tableTitle">
-        Store Name Products
-      </Typography>
-      <Tooltip title="Filter list">
-        <IconButton aria-label="filter list">
-          <FilterListIcon />
-        </IconButton>
-      </Tooltip>
-    </Toolbar>
-  );
-};
-
-EnhancedTableToolbar.propTypes = {
-  numSelected: PropTypes.number.isRequired,
-};
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-    marginTop: theme.spacing(3),
   },
   paper: {
     width: '100%',
-    marginBottom: theme.spacing(2),
   },
   table: {
     minWidth: 750,
@@ -216,9 +191,18 @@ export default function EnhancedTable() {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="productTableMain">
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <Toolbar className="tableHeaderTop">
+          <Typography className="tableHeader" variant="h6" id="tableTitle">
+            Store Name Products
+          </Typography>
+          <Tooltip title="Filter list">
+            <IconButton aria-label="filter list">
+              <FilterListIcon />
+            </IconButton>
+          </Tooltip>
+        </Toolbar>
         <div className={classes.tableWrapper}>
           <Table
             className={classes.table}

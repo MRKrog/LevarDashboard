@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="41px" height="47px" viewBox="0 0 41 47" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>home_icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="dashboard3.0" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dashboard---Overview" transform="translate(-39.000000, -196.000000)" fill="#FFFFFF">
+            <g id="SidebarButtons">
+                <g transform="translate(0.000000, 181.000000)" id="Text_icons">
+                    <g>
+                        <g id="home_icon" transform="translate(39.000000, 15.000000)">
+                            <g>
+                                <polygon id="Fill-1" points="28 30.8201845 28 42 33 39.231008 33 28"></polygon>
+                                <polygon id="Fill-2" points="40.947069 17.3905222 21.49535 6.10947778 10.6962959 0 0 18.4856222 0.0532455549 35.7722222 19.5049645 47 21.4443694 45.8515284 21.3911238 29.5587178 30.1460226 14.4142733 39.0073496 19.4264056 39.0585505 35.7724833 41 34.6240122"></polygon>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

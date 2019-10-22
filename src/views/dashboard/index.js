@@ -9,8 +9,8 @@ class Dashboard extends Component {
     return (
       <>
         <Sidebar />
-        <div className="main-container dashboard">
-          <div className="table-container">
+        <div className="main-container">
+          <div className="dashboard">
             <Switch>
               {routes.map((prop, key) => {
                 if (prop.redirect)

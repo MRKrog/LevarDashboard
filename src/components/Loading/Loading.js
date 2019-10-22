@@ -1,5 +1,5 @@
 import React from 'react';
-import loadingImage from '../../assets/images/icons/logo.svg';
+import loadingImage from '../../assets/images/loading/logo.svg';
 
 const Loading = () => {
   return (

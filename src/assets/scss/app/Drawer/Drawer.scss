@@ -1,0 +1,108 @@
+.Drawer {
+  width: 64px;
+  height: 100%;
+  background-color: $sidebarAccentColor;
+  color: $fontColorWhite;
+
+  .header {
+    height: $sidebarHeaderHeight;
+    display: flex;
+
+    .logo {
+      width: 100%;
+
+      img {
+        width: $logoWidth;
+        margin-left: 10px;
+      }
+    }
+
+    .profile {
+      min-width: $sidebarProfileWidth;
+      background-color: $secondaryBtnColor;
+    }
+  }
+
+  .menu-content {
+    height: $menuContentHeight;
+    background-color: $sidebarBaseColor;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 3em;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        margin: 0;
+        padding: 0;
+
+        &:first-child {
+        }
+
+        &:last-child {
+        }
+
+        a {
+          text-decoration: none;
+          display: flex;
+          width: 100%;
+          align-items: center;
+          padding: 10px 0px 10px 0px;
+          transition: all .5s ease;
+
+          &:hover {
+            background: #2a2a2a;
+            h4 {
+              opacity: .6;
+            }
+          }
+
+          img {
+            opacity: .4;
+            flex: 1 1;
+            max-height: 30px;
+            width: 100%;
+          }
+
+          h4 {
+            opacity: .4;
+            color: #fff;
+            flex: 2;
+            margin: 0;
+            font-size: 1em;
+            line-height: 1;
+            letter-spacing: .03em;
+            transition: all .5s ease;
+          }
+
+        }
+
+      }
+
+    }
+  }
+
+  .grey-space {
+    height: calc(
+      100% - #{$sidebarHeaderHeight} - #{$menuContentHeight} - #{$addProductHeight}
+    );
+  }
+
+  .add-product {
+    height: $addProductHeight;
+    background-color: $sidebarBaseColor;
+  }
+
+  &.sidebar-auth {
+    width: 80%;
+    background-color: $sidebarBaseColor;
+    .header {
+      background-color: $sidebarAccentColor;
+    }
+  }
+
+}

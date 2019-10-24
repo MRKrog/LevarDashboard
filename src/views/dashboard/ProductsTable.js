@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
 import ButtonStatus from './Products/ButtonStatus/ButtonStatus';
-// import { setStatus3D } from './Products/utilities'
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -17,35 +16,30 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
+import Zoom from '@material-ui/core/Zoom';
 import FilterListIcon from '@material-ui/icons/FilterList';
 
+// import { setStatus3D } from './Products/utilities'
 
-// import clsx from 'clsx';
-// import Checkbox from '@material-ui/core/Checkbox';
-// import FormControlLabel from '@material-ui/core/FormControlLabel';
-// import Switch from '@material-ui/core/Switch';
-// import DeleteIcon from '@material-ui/icons/Delete';
-
-
-function createData(title, variant, vendor, type, sales, returns, threed) {
-  return { title, variant, vendor, type, sales, returns, threed };
-}
-
-const rows = [
-  createData('Item 1', 'Os/a', 'Adidas', 'acc.', 1, 50, 0),
-  createData('Item 2', 'Os/a', 'Adidas', 'acc.', 10, 11, 2),
-  createData('Item 3', 'Os/a', 'Adidas', 'acc.', 3, 23, 1),
-  createData('Item 4', 'Os/a', 'Adidas', 'acc.', 4, 43, 0),
-  createData('Item 5', 'Os/a', 'Adidas', 'acc.', 76, 55, 2),
-  createData('Item 6', 'Os/a', 'Adidas', 'acc.', 45, 51, 3),
-  createData('Item 7', 'Os/a', 'Adidas', 'acc.', 34, 54, 1),
-  createData('Item 8', 'Os/a', 'Adidas', 'acc.', 3, 51, 0),
-  createData('Item 9', 'Os/a', 'Adidas', 'acc.', 6, 59, 2),
-  createData('Item 10', 'Os/a', 'Adidas', 'acc.', 87, 53, 3),
-  createData('Item 11', 'Os/a', 'Adidas', 'acc.', 13, 45, 1),
-  createData('Item 12', 'Os/a', 'Adidas', 'acc.', 54, 65, 0),
-  createData('Item 13', 'Os/a', 'Adidas', 'acc.', 9, 56, 2),
-];
+// function createData(title, variant, vendor, type, sales, returns, threed) {
+//   return { title, variant, vendor, type, sales, returns, threed };
+// }
+//
+// const rows = [
+//   createData('Item 1', 'Os/a', 'Adidas', 'acc.', 1, 50, 0),
+//   createData('Item 2', 'Os/a', 'Adidas', 'acc.', 10, 11, 2),
+//   createData('Item 3', 'Os/a', 'Adidas', 'acc.', 3, 23, 1),
+//   createData('Item 4', 'Os/a', 'Adidas', 'acc.', 4, 43, 0),
+//   createData('Item 5', 'Os/a', 'Adidas', 'acc.', 76, 55, 2),
+//   createData('Item 6', 'Os/a', 'Adidas', 'acc.', 45, 51, 3),
+//   createData('Item 7', 'Os/a', 'Adidas', 'acc.', 34, 54, 1),
+//   createData('Item 8', 'Os/a', 'Adidas', 'acc.', 3, 51, 0),
+//   createData('Item 9', 'Os/a', 'Adidas', 'acc.', 6, 59, 2),
+//   createData('Item 10', 'Os/a', 'Adidas', 'acc.', 87, 53, 3),
+//   createData('Item 11', 'Os/a', 'Adidas', 'acc.', 13, 45, 1),
+//   createData('Item 12', 'Os/a', 'Adidas', 'acc.', 54, 65, 0),
+//   createData('Item 13', 'Os/a', 'Adidas', 'acc.', 9, 56, 2),
+// ];
 
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
@@ -72,14 +66,14 @@ function getSorting(order, orderBy) {
 }
 
 const headCells = [
-  { id: 'thumbnail', sortable: false, label: '' },
-  { id: 'title', sortable: false, label: 'Title' },
-  { id: 'variant', sortable: false, label: 'Variant' },
-  { id: 'vendor', sortable: false, label: 'Vendor' },
-  { id: 'type', sortable: false, label: 'Type' },
-  { id: 'sales', sortable: true, label: 'Sales Rank' },
-  { id: 'returns', sortable: true, label: 'Returns Rank' },
-  { id: 'threed', sortable: false, label: '3D' },
+  { id: 'thumbnail', numeric: false, sortable: false, label: '' },
+  { id: 'title', numeric: false, sortable: true, label: 'Title' },
+  { id: 'variant', numeric: false, sortable: false, label: 'Variant' },
+  { id: 'vendor', numeric: false, sortable: true, label: 'Vendor' },
+  { id: 'type', numeric: false, sortable: true, label: 'Type' },
+  { id: 'salesRank', numeric: false, sortable: true, label: 'Sales Rank' },
+  { id: 'returnsRanks', numeric: false, sortable: true, label: 'Returns Rank' },
+  { id: 'threeD', numeric: false, sortable: true, label: '3D' },
 ];
 
 function EnhancedTableHead(props) {
@@ -119,14 +113,14 @@ function EnhancedTableHead(props) {
     </TableHead>
   );
 }
-
-EnhancedTableHead.propTypes = {
-  classes: PropTypes.object.isRequired,
-  onRequestSort: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-  orderBy: PropTypes.string.isRequired,
-  rowCount: PropTypes.number.isRequired,
-};
+//
+// EnhancedTableHead.propTypes = {
+//   classes: PropTypes.object.isRequired,
+//   onRequestSort: PropTypes.func.isRequired,
+//   order: PropTypes.oneOf(['asc', 'desc']).isRequired,
+//   orderBy: PropTypes.string.isRequired,
+//   rowCount: PropTypes.number.isRequired,
+// };
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -140,6 +134,7 @@ const useStyles = makeStyles(theme => ({
   },
   tableWrapper: {
     overflowX: 'auto',
+    maxHeight: '80vh',
   },
   visuallyHidden: {
     border: 0,
@@ -154,13 +149,13 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function ProductsTable() {
+export default function ProductsTable(props) {
   const classes = useStyles();
-  const [order, setOrder] = React.useState('desc');
-  const [orderBy, setOrderBy] = React.useState('sales');
-  // const [selected] = React.useState([]);
+  const [ { products, vendor } ] = React.useState(props.productData);
+  const [order, setOrder] = React.useState('asc');
+  const [orderBy, setOrderBy] = React.useState('title');
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(15);
 
   const handleRequestSort = (event, property) => {
     const isDesc = orderBy === property && order === 'desc';
@@ -182,7 +177,7 @@ export default function ProductsTable() {
       <Paper className={classes.paper}>
         <Toolbar className="tableHeaderTop">
           <Typography className="tableHeader" variant="h6" id="tableTitle">
-            Store Name Products
+            {vendor} Products
           </Typography>
           <Tooltip title="Filter list">
             <IconButton aria-label="filter list">
@@ -195,35 +190,41 @@ export default function ProductsTable() {
             className={classes.table}
             aria-labelledby="tableTitle"
             aria-label="enhanced table"
+            stickyHeader aria-label="sticky table"
           >
             <EnhancedTableHead
               classes={classes}
-              // numSelected={selected.length}
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
+              rowCount={products.length}
             />
             <TableBody>
-              {stableSort(rows, getSorting(order, orderBy))
+              {stableSort(products, getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   return (
                     <TableRow
                       tabIndex={-1}
-                      key={row.title}
+                      key={row.id}
                     >
                       <TableCell>
                         <img className="thumbnail" src={require("../../assets/images/thumbEx.svg")} alt="logo" />
                       </TableCell>
-                      <TableCell>{row.title}</TableCell>
+                      <Tooltip title={row.title}
+                               enterDelay={1000}
+                               leaveDelay={100}
+                               placement="right"
+                               TransitionComponent={Zoom}>
+                        <TableCell>{row.title}</TableCell>
+                      </Tooltip>
                       <TableCell>{row.variant}</TableCell>
                       <TableCell>{row.vendor}</TableCell>
                       <TableCell>{row.type}</TableCell>
-                      <TableCell>{row.sales} of 100</TableCell>
-                      <TableCell>{row.returns} of 100</TableCell>
+                      <TableCell>{row.salesRank} of 100</TableCell>
+                      <TableCell>{row.returnsRanks} of 100</TableCell>
                       <TableCell>
-                        <ButtonStatus status={row.threed} />
+                        <ButtonStatus status={row.threeD} />
                       </TableCell>
                     </TableRow>
                   );
@@ -232,9 +233,9 @@ export default function ProductsTable() {
           </Table>
         </div>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[15, 25]}
           component="div"
-          count={rows.length}
+          count={products.length}
           rowsPerPage={rowsPerPage}
           page={page}
           backIconButtonProps={{

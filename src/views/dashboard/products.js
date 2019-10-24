@@ -4,7 +4,7 @@ import Loading from "../../components/Loading/Loading";
 
 import { connect } from "react-redux";
 import { setLoading } from "../../redux/actions/loading";
-
+import { testVendor } from '../../testProductData.js'
 // import { fetchData } from "../../utility/fetchData.js";
 
 
@@ -12,7 +12,7 @@ class Products extends Component {
 
   componentDidMount() {
     // const { setLoading } = this.props;
-    console.log('product component loaded');
+    console.log('product component loaded', testVendor);
     // this.props.setLoading(true);
   }
 
@@ -29,7 +29,7 @@ class Products extends Component {
         {
           loading ? (
             <Loading />
-          ) : <ProductsTable />
+          ) : <ProductsTable productData={testVendor}/>
         }
       </div>
     );

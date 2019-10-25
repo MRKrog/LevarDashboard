@@ -1,5 +1,6 @@
 /* Font Import */
 @import url("../fonts/Montserrat/Montserrat.css");
+@import url('https://fonts.googleapis.com/css?family=Abel|Lato:300,400|Oswald:300,400&display=swap');
 
 @import "variables/variables";
 @import "app/app";
@@ -17,4 +18,4 @@
 @import "app/dashboard/dashboard";
 
 /* Drawer Styles */
-@import "app/Drawer/Drawer";
+@import "../../views/SideBarDrawer/SideBarDrawer";

@@ -1,0 +1,61 @@
+.SideBarDrawer {
+  width: auto;
+
+  .MuiIconButton-root {
+    background-color: rgba(0, 0, 0, 0.08);
+    transition: all .3s ease;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  /* Base Sidebar Container */
+  .MuiPaper-root {
+    background-color: $sidebarAccentColor;
+  }
+
+  /* Navigation Sections */
+  .NavContainer {
+
+    &.NavTop {
+      display: flex;
+      background-color: $sidebarBaseColor;
+      align-items: center;
+      min-height: 40%;
+    }
+
+    &.NavMiddle {
+      display: flex;
+      align-items: center;
+      height: 15%;
+    }
+
+    &.NavBottom {
+      display: flex;
+      background-color: $sidebarBaseColor;
+      height: 37%;
+    }
+
+    /* Navigation Link Attributes */
+    .NavLink {
+      padding: 14px 8px;
+
+      .NavIcon {
+        min-width: 56px;
+
+        img {
+          vertical-align: baseline;
+        }
+      }
+
+      .NavTitle {
+        font-family: $fontAbel;
+        color: #cacaca;
+        font-size: 1.4em;
+        letter-spacing: .02em;
+        margin: 0;
+      }
+    }
+  }
+}

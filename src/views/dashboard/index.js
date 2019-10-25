@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 import routes from "./routes";
 import Sidebar from "../layouts/sidebar";
-import Drawer from "../Drawer/Drawer";
+import SideBarDrawer from "../SideBarDrawer/SideBarDrawer";
+import Test from "./test";
 
 class Dashboard extends Component {
   render() {
     let path = "/dashboard";
     return (
       <>
-        <Drawer />
+        <div className="SideBarDrawer">
+          <SideBarDrawer />
+        </div>
         <div className="main-container">
           <div className="dashboard">
             <Switch>

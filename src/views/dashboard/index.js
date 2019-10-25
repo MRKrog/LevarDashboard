@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 import routes from "./routes";
-import Sidebar from "../layouts/sidebar";
 import SideBarDrawer from "../SideBarDrawer/SideBarDrawer";
+import Header from "../Header/Header";
 import Test from "./test";
 
 class Dashboard extends Component {
@@ -17,6 +17,7 @@ class Dashboard extends Component {
           <SideBarDrawer />
         </div>
         <div className="main-container">
+          <Header />
           <div className="dashboard">
             <Switch>
               {routes.map((prop, key) => {

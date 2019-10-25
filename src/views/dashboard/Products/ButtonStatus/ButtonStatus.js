@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './ButtonStatus.scss';
 
 import arcube from '../../../../assets/images/icons/arcube.svg';
 import addproductplus from '../../../../assets/images/icons/addproductplus.svg';

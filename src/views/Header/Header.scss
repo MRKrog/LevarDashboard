@@ -1,0 +1,24 @@
+.Header {
+  display: flex;
+  // justify-content: center;
+  background: #cacaca;
+  height: 42px;
+  border-bottom: solid 1px #cccccc;
+
+  .LevarIcon {
+    flex: 1;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .AccountContainer {
+    flex: 1;
+
+    img {
+      height: 100%;
+    }
+  }
+
+}

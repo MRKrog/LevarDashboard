@@ -134,7 +134,7 @@ const useStyles = makeStyles(theme => ({
   },
   tableWrapper: {
     overflowX: 'auto',
-    maxHeight: '80vh',
+    maxHeight: '76vh',
   },
   visuallyHidden: {
     border: 0,

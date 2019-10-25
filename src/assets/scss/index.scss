@@ -11,11 +11,15 @@
 @import "app/layouts/sidebar";
 @import "app/layouts/progressbar";
 
-/* Components Styles */
-@import "components/loading";
+/* Drawer Styles */
+@import "../../views/SideBarDrawer/SideBarDrawer";
 
 /* Dashboard Styles */
 @import "app/dashboard/dashboard";
+@import "../../views/dashboard/Products/ButtonStatus/ButtonStatus";
 
-/* Drawer Styles */
-@import "../../views/SideBarDrawer/SideBarDrawer";
+/* Header Styles */
+@import "../../views/Header/Header";
+
+/* Components Styles */
+@import "components/loading";

@@ -1,5 +1,8 @@
 .SideBarDrawer {
-  width: auto;
+  max-width: 250px;
+  height: 100%;
+  position: relative;
+  display: flex;
 
   .MuiIconButton-root {
     background-color: rgba(0, 0, 0, 0.08);

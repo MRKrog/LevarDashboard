@@ -6,8 +6,11 @@ import SideBarDrawer from "../SideBarDrawer/SideBarDrawer";
 import Test from "./test";
 
 class Dashboard extends Component {
+
   render() {
+
     let path = "/dashboard";
+
     return (
       <>
         <div className="SideBarDrawer">

@@ -11,14 +11,14 @@
 }
 
 .dashboard {
-  width: 100%;
-  height: 100%;
+  // width: 100%;
+  // height: 100%;
 
     .products {
-      position: relative;
-      height: 100%;
-      display: flex;
-      align-items: flex-start;
+      // position: relative;
+      // height: 100%;
+      // display: flex;
+      // align-items: flex-start;
 
       /* table individual head */
       thead.MuiTableHead-root {
@@ -141,8 +141,8 @@
       }
 
       #productTableMain {
-        width: 100%;
-        padding: 1em;
+        // width: 100%;
+        // padding: 1em;
 
         .MuiPaper-elevation1 {
           border-top-left-radius: 5px;

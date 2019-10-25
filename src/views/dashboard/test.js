@@ -18,6 +18,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
+
+import Products from "./products";
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -115,6 +118,9 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
+          <Typography variant="h6" noWrap>
+            Mini variant drawer
+          </Typography>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -155,6 +161,10 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
+        <Products />
+      </main>
     </div>
   );
 }

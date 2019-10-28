@@ -1,6 +1,6 @@
 import SetupWizard from "./views/setup-wizard";
 import Login from "./views/auth/login";
-import Dashboard from "./views/dashboard";
+import Dashboard from "./views/Dashboard";
 
 const routes = [
     {
@@ -16,7 +16,7 @@ const routes = [
         component: Login
     },
     {
-      path: "/dashboard",
+      path: "/Dashboard",
       name: "Dashboard",
       component: Dashboard
     },

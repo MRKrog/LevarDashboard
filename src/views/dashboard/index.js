@@ -10,11 +10,11 @@ class Dashboard extends Component {
   render() {
 
     let path = "/dashboard";
-
+    console.log("location", this.props.location);
     return (
       <>
         <div className="SideBarDrawer">
-          <SideBarDrawer />
+          <SideBarDrawer path={this.props.location.pathname}/>
         </div>
         <div className="main-container">
           <Header />

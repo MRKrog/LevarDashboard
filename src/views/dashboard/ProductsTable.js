@@ -134,7 +134,7 @@ const useStyles = makeStyles(theme => ({
   },
   tableWrapper: {
     overflowX: 'auto',
-    maxHeight: '76vh',
+    maxHeight: '73vh',
   },
   visuallyHidden: {
     border: 0,
@@ -179,11 +179,6 @@ export default function ProductsTable(props) {
           <Typography className="tableHeader" variant="h6" id="tableTitle">
             {vendor} Products
           </Typography>
-          <Tooltip title="Filter list">
-            <IconButton aria-label="filter list">
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
         </Toolbar>
         <div className={classes.tableWrapper}>
           <Table

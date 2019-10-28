@@ -11,10 +11,53 @@
 }
 
 .dashboard {
-  padding: 1em;
+  padding: 2em;
 
-    .products {
+  /* Bottom Table Toolbar */
+  .MuiTablePagination-toolbar {
+    border-top: solid 1px #cccccc;
+  }
 
+  .products {
+
+    #productTableMain {
+
+      .MuiPaper-elevation1 {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+
+      /* Header Table */
+      .tableHeaderTop {
+        background: #66767d;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom: solid 1px #797979;
+
+        #tableTitle {
+          // text-transform: uppercase;
+          // letter-spacing: .05em;
+          // font-weight: 100;
+          font-size: 2.1em;
+          color: #fff;
+          font-weight: 500;
+          font-family: $fontOswald;
+          font-family: "Montserrat", sans-serif !important;
+        }
+      }
+
+      .tableHeader {
+        flex: 1 1 100%;
+      }
+
+      .thumbnail {
+        max-width: 50px;
+      }
+    }
+      // .MuiTableSortLabel-root:hover {}
+      .MuiTableSortLabel-icon {
+        color:#fff;
+      }
       /* table individual head */
       thead.MuiTableHead-root {
 
@@ -32,12 +75,12 @@
             font-size: 1em;
 
             /* Active Label head */
-            .MuiTableSortLabel-root.MuiTableSortLabel-active {
+            .MuiTableSortLabel-root {
               color: #fff;
             }
 
             /* SVG Label head */
-            .MuiTableSortLabel-root.MuiTableSortLabel-active.MuiTableSortLabel-root.MuiTableSortLabel-active .MuiTableSortLabel-icon {
+            .MuiTableSortLabel-icon {
               color: #fff;
               font-size: 1.2em;
             }
@@ -128,7 +171,6 @@
         }
       }
 
-
       tbody tr td {
         padding: 10px;
       }
@@ -137,47 +179,10 @@
         text-align: center;
       }
 
-      #productTableMain {
-
-        .MuiPaper-elevation1 {
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
-        }
-
-        /* Header Table */
-        .tableHeaderTop {
-          background: #66767d;
-          border-top-left-radius: 5px;
-          border-top-right-radius: 5px;
-          border-bottom: solid 1px #797979;
-
-          #tableTitle {
-            text-transform: uppercase;
-            letter-spacing: .05em;
-            font-size: 2.1em;
-            font-weight: 100;
-            color: #fff;
-            font-family: $fontOswald;
-          }
-        }
-
-        .tableHeader {
-          flex: 1 1 100%;
-        }
-
-        .thumbnail {
-          max-width: 50px;
-        }
-      }
-
       .dashboard-container {
         padding: 10px;
       }
 
     }
 
-    /* Bottom Table Toolbar */
-    .MuiTablePagination-toolbar {
-      border-top: solid 1px #cccccc;
-    }
 }

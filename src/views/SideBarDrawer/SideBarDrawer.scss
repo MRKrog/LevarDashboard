@@ -44,6 +44,11 @@
     .NavLink {
       padding: 14px 8px;
 
+      &.isActive {
+        background-color: rgba(0, 0, 0, 0.08);
+        pointer-events: none;
+      }
+
       .NavIcon {
         min-width: 56px;
 

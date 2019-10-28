@@ -20,10 +20,10 @@ import successIcon from '../../assets/images/icons/succteam_symbol.svg';
 import creationIcon from '../../assets/images/icons/assetcreationinfo_icon.svg';
 
 
-const SideBarDrawer = () => {
+const SideBarDrawer = (props) => {
   const classes = useStyles();
-  // const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  // const location = React.useState(props.pathname)
 
   const handleDrawer = () => {
     setOpen(!open);
@@ -57,31 +57,46 @@ const SideBarDrawer = () => {
         <Divider />
         <div className="NavContainer NavTop">
           <List className={classes.navList}>
-            <ListItem button component={Link} to="/dashboard/overview" className="NavLink">
+            <ListItem button
+                      component={Link}
+                      to="/dashboard/overview"
+                      className={"NavLink " + (props.path == '/dashboard/overview' ? 'isActive' : null)}>
               <Icon className="NavIcon">
                 <img src={overviewIcon} alt="Overview"/>
               </Icon>
               <h4 className="NavTitle">Overview</h4>
             </ListItem>
-            <ListItem button component={Link} to="/dashboard/products" className="NavLink">
+            <ListItem button
+                      component={Link}
+                      to="/dashboard/products"
+                      className={"NavLink " + (props.path == '/dashboard/products' ? 'isActive' : null)}>
               <Icon className="NavIcon">
                 <img src={productIcon} alt="Products"/>
               </Icon>
               <h4 className="NavTitle">Products</h4>
             </ListItem>
-            <ListItem button component={Link} to="/dashboard/" className="NavLink">
+            <ListItem button
+                      component={Link}
+                      to="/dashboard/"
+                      className="NavLink">
               <Icon className="NavIcon">
                 <img src={integrationsIcon} alt="Integrations"/>
               </Icon>
               <h4 className="NavTitle">Integrations</h4>
             </ListItem>
-            <ListItem button component={Link} to="/dashboard/" className="NavLink">
+            <ListItem button
+                      component={Link}
+                      to="/dashboard/"
+                      className="NavLink">
               <Icon className="NavIcon">
                 <img src={pipelineIcon} alt="Asset Pipeline"/>
               </Icon>
               <h4 className="NavTitle">Asset Pipeline</h4>
             </ListItem>
-            <ListItem button component={Link} to="/dashboard/" className="NavLink">
+            <ListItem button
+                      component={Link}
+                      to="/dashboard/"
+                      className="NavLink">
               <Icon className="NavIcon">
                 <img src={settingsIcon} alt="Settings"/>
               </Icon>
@@ -91,13 +106,19 @@ const SideBarDrawer = () => {
         </div>
         <div className="NavContainer NavMiddle">
           <List className={classes.navList}>
-            <ListItem button component={Link} to="/dashboard/" className="NavLink">
+            <ListItem button
+                      component={Link}
+                      to="/dashboard/"
+                      className="NavLink">
               <Icon className="NavIcon">
                 <img src={successIcon} alt="levAR Success"/>
               </Icon>
               <h4 className="NavTitle">levAR Success</h4>
             </ListItem>
-            <ListItem button component={Link} to="/dashboard/" className="NavLink">
+            <ListItem button
+                      component={Link}
+                      to="/dashboard/"
+                      className="NavLink">
               <Icon className="NavIcon">
                 <img src={creationIcon} alt="Asset Creation"/>
               </Icon>

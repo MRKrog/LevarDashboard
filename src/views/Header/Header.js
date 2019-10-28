@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import levarIcon from '../../assets/images/levarlogo_white.png';
+import levarIcon from '../../assets/images/levarlogo_whiteHoriz.png';
+
+import Tooltip from '@material-ui/core/Tooltip';
+import IconButton from '@material-ui/core/IconButton';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 
 class Header extends Component {
@@ -10,7 +14,11 @@ class Header extends Component {
           <img src={levarIcon} alt="levAR" />
         </section>
         <section className="AccountContainer">
-          <img src={levarIcon} alt="levAR" />
+          <Tooltip title="Account">
+            <IconButton aria-label="Account">
+              <AccountCircleIcon className="AccountIcon" />
+            </IconButton>
+          </Tooltip>
         </section>
       </div>
     );

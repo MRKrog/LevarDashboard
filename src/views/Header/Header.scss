@@ -1,23 +1,39 @@
 .Header {
   display: flex;
+  align-items: center;
+  padding: 0 2em;
   // justify-content: center;
   background: #cacaca;
-  height: 42px;
+  height: 50px;
   border-bottom: solid 1px #cccccc;
 
   .LevarIcon {
     flex: 1;
+    display: flex;
+    // justify-content: flex-end;
 
     img {
-      height: 100%;
+      width: 100%;
+      max-width: 125px;
     }
   }
 
   .AccountContainer {
     flex: 1;
+    display: flex;
+    justify-content: flex-end;
 
-    img {
-      height: 100%;
+    .MuiIconButton-root {
+      padding: 5px;
+    }
+
+    .AccountIcon {
+      color: #37c1ff;
+      cursor: pointer;
+      font-size: 1.3em;
+      background: #ffffffa3;
+      border-radius: 50%;
+      border: solid 1px #ffffff57;
     }
   }
 

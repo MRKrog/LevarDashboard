@@ -80,14 +80,16 @@
   }
 }
 
-.MuiAppBar-positionFixed {
-  left: 0!important;
-}
+.SideBarDrawer {
+  .MuiAppBar-positionFixed {
+    left: 0!important;
+  }
 
-.MuiAppBar-root {
-  max-width: 73px !important;
-}
+  .MuiAppBar-root {
+    max-width: 73px !important;
+  }
 
-.MuiListItem-gutters {
-  padding-left: 23px !important;
+  .MuiListItem-gutters {
+    padding-left: 23px !important;
+  }
 }

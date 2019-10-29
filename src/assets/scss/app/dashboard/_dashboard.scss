@@ -1,64 +1,39 @@
-.MuiAppBar-positionFixed {
-  left: 0!important;
+
+.Header {
+  height: 5vh;
 }
 
-.MuiAppBar-root {
-  max-width: 73px !important;
-}
+.Dashboard {
+  height: 95vh;
+  padding: 1em;
 
-.MuiListItem-gutters {
-  padding-left: 23px !important;
-}
+  .tableContent {
+    position: relative;
+    width: 100%;
 
-.dashboard {
-  padding: 2em;
+    .MuiPaper-elevation1 {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
 
-  /* Bottom Table Toolbar */
-  .MuiTablePagination-toolbar {
-    border-top: solid 1px #cccccc;
-  }
-
-  .products {
-
-    #productTableMain {
-
-      .MuiPaper-elevation1 {
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-      }
-
-      /* Header Table */
-      .tableHeaderTop {
-        background: #66767d;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        border-bottom: solid 1px #797979;
-
-        #tableTitle {
-          // text-transform: uppercase;
-          // letter-spacing: .05em;
-          // font-weight: 100;
-          font-size: 2.1em;
-          color: #fff;
-          font-weight: 500;
-          font-family: $fontOswald;
-          font-family: "Montserrat", sans-serif !important;
-        }
-      }
+    /* Table Header */
+    .tableHeaderTop {
+      background: #66767d;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom: solid 1px #797979;
 
       .tableHeader {
         flex: 1 1 100%;
-      }
-
-      .thumbnail {
-        max-width: 50px;
+        font-size: 2.1em;
+        color: #fff;
+        font-weight: 400;
       }
     }
-      // .MuiTableSortLabel-root:hover {}
-      .MuiTableSortLabel-icon {
-        color:#fff;
-      }
-      /* table individual head */
+
+    .tableWrapper {
+      width: 100%;
+
       thead.MuiTableHead-root {
 
         .MuiTableCell-stickyHeader {
@@ -66,7 +41,6 @@
         }
 
         tr.MuiTableRow-head {
-          background: #66767d;
 
           th {
             color: #fffc;
@@ -84,105 +58,30 @@
               color: #fff;
               font-size: 1.2em;
             }
-
-          }
-
-          th:nth-child(2) {
-            max-width: 250px;
-          }
-
-          th:nth-child(3) {
-            max-width: 100px;
-          }
-
-          th:nth-child(4) {
-            max-width: 100px;
-          }
-
-          th:nth-child(5) {
-            max-width: 100px;
-          }
-
-          th:nth-child(6) {
-            // text-align: center;
-            // max-width: 150px;
-          }
-
-          th:nth-child(7) {
-            // text-align: center;
-            // max-width: 150px;
-          }
-
-          th:nth-child(8) {
-            text-align: center;
           }
         }
-
       }
 
-      tbody.MuiTableBody-root {
-
-        overflow: scroll;
-
-        tr.MuiTableRow-root:nth-child(even){
-          background: #efefef;
-        }
-
-        /* table individual rows */
-        tr.MuiTableRow-root {
-
-          td {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-
-          td:nth-child(2) {
-            max-width: 250px;
-          }
-
-          td:nth-child(3) {
-            max-width: 100px;
-            text-transform: uppercase;
-          }
-
-          td:nth-child(4) {
-            max-width: 100px;
-          }
-
-          td:nth-child(5) {
-            max-width: 100px;
-          }
-
-          td:nth-child(6) {
-            // text-align: center;
-            // max-width: 150px;
-          }
-
-          td:nth-child(7) {
-            // text-align: center;
-            // max-width: 150px;
-          }
-
-          td:nth-child(8) {
-            text-align: center;
-          }
-
-        }
+      tr.MuiTableRow-root:nth-child(even){
+        background: #efefef;
       }
 
-      tbody tr td {
-        padding: 10px;
+      /* Bottom Table Toolbar */
+      .MuiTablePagination-toolbar {
+        border-top: solid 1px #cccccc;
       }
-
-      tbody tr td:last-child {
-        text-align: center;
-      }
-
-      .dashboard-container {
-        padding: 10px;
-      }
-
     }
+  }
+}
 
+.MuiAppBar-positionFixed {
+  left: 0!important;
+}
+
+.MuiAppBar-root {
+  max-width: 73px !important;
+}
+
+.MuiListItem-gutters {
+  padding-left: 23px !important;
 }

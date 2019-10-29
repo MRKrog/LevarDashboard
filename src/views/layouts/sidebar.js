@@ -7,9 +7,6 @@ import integrationsIcon from '../../assets/images/icons/chart_icon.svg';
 import pipelineIcon from '../../assets/images/icons/3Dpipeline_icon.svg';
 import settingsIcon from '../../assets/images/icons/settings_icon.svg';
 
-import successIcon from '../../assets/images/icons/succteam_symbol.svg';
-import creationIcon from '../../assets/images/icons/assetcreationinfo_icon.svg';
-
 export default class Sidebar extends Component {
   render() {
     return (

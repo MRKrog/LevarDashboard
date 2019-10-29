@@ -11,7 +11,7 @@ class ButtonStatus extends Component {
       case 0:
         buttonStatus = (
           <button className="addProduct">
-            <img src={addproductplus}></img> <span>Add Product</span>
+            <img alt="Add Product" src={addproductplus}></img> <span>Create AR</span>
           </button>)
         break;
       case 1:
@@ -29,7 +29,7 @@ class ButtonStatus extends Component {
       case 3:
         buttonStatus = (
           <button className="finished">
-            <img src={arcube}></img>
+            <img alt="Finished" src={arcube}></img>
           </button>)
         break;
       default:

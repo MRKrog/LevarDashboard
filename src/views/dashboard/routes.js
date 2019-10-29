@@ -1,5 +1,8 @@
-import Overview from "./overview";
-import Products from "./products";
+import Overview from "./Overview/index";
+import Products from "./Products/index";
+import Settings from "./Settings";
+import AssetPipeline from "./AssetPipeline";
+import Integrations from "./Integrations";
 
 const routes = [
   {
@@ -13,10 +16,26 @@ const routes = [
     component: Products
   },
   {
+    path: "/integrations",
+    name: "integrations",
+    component: Integrations
+  },
+  {
+    path: "/assetpipeline",
+    name: "Asset Pipeline",
+    component: AssetPipeline
+  },
+  {
+    path: "/settings",
+    name: "settings",
+    component: Settings
+  },
+  {
     redirect: true,
     path: "/",
     to: "/overview",
-    name: "Overview"
+    name: "overview",
+    component: Overview
   }
 ];
 

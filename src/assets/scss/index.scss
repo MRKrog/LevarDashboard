@@ -16,7 +16,9 @@
 
 /* Dashboard Styles */
 @import "app/dashboard/dashboard";
-@import "../../views/dashboard/Products/ButtonStatus/ButtonStatus";
+@import "../../views/Dashboard/Products/ProductsTable/ProductsTable";
+@import "../../views/Dashboard/Overview/OverviewTable/OverviewTableStyles";
+@import "../../views/Dashboard/Products/ButtonStatus/ButtonStatus";
 
 /* Header Styles */
 @import "../../views/Header/Header";

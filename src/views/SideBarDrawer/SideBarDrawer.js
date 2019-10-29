@@ -60,7 +60,7 @@ const SideBarDrawer = (props) => {
             <ListItem button
                       component={Link}
                       to="/dashboard/overview"
-                      className={"NavLink " + (props.path == '/dashboard/overview' ? 'isActive' : null)}>
+                      className={"NavLink " + (props.path === '/dashboard/overview' ? 'isActive' : null)}>
               <Icon className="NavIcon">
                 <img src={overviewIcon} alt="Overview"/>
               </Icon>
@@ -69,7 +69,7 @@ const SideBarDrawer = (props) => {
             <ListItem button
                       component={Link}
                       to="/dashboard/products"
-                      className={"NavLink " + (props.path == '/dashboard/products' ? 'isActive' : null)}>
+                      className={"NavLink " + (props.path === '/dashboard/products' ? 'isActive' : null)}>
               <Icon className="NavIcon">
                 <img src={productIcon} alt="Products"/>
               </Icon>
@@ -77,8 +77,8 @@ const SideBarDrawer = (props) => {
             </ListItem>
             <ListItem button
                       component={Link}
-                      to="/dashboard/"
-                      className="NavLink">
+                      to="/dashboard/integrations"
+                      className={"NavLink " + (props.path === '/dashboard/integrations' ? 'isActive' : null)}>
               <Icon className="NavIcon">
                 <img src={integrationsIcon} alt="Integrations"/>
               </Icon>
@@ -86,8 +86,8 @@ const SideBarDrawer = (props) => {
             </ListItem>
             <ListItem button
                       component={Link}
-                      to="/dashboard/"
-                      className="NavLink">
+                      to="/dashboard/assetpipeline"
+                      className={"NavLink " + (props.path === '/dashboard/assetpipeline' ? 'isActive' : null)}>
               <Icon className="NavIcon">
                 <img src={pipelineIcon} alt="Asset Pipeline"/>
               </Icon>
@@ -95,8 +95,8 @@ const SideBarDrawer = (props) => {
             </ListItem>
             <ListItem button
                       component={Link}
-                      to="/dashboard/"
-                      className="NavLink">
+                      to="/dashboard/settings"
+                      className={"NavLink " + (props.path === '/dashboard/settings' ? 'isActive' : null)}>
               <Icon className="NavIcon">
                 <img src={settingsIcon} alt="Settings"/>
               </Icon>

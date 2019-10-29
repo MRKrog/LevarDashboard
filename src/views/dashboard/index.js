@@ -3,14 +3,12 @@ import { Switch, Redirect, Route } from "react-router-dom";
 import routes from "./routes";
 import SideBarDrawer from "../SideBarDrawer/SideBarDrawer";
 import Header from "../Header/Header";
-import Test from "./test";
+// import Test from "./test";
 
 class Dashboard extends Component {
-
   render() {
-
     let path = "/dashboard";
-    console.log("location", this.props.location);
+    // console.log("location", this.props.location);
     return (
       <>
         <div className="SideBarDrawer">
@@ -18,7 +16,7 @@ class Dashboard extends Component {
         </div>
         <div className="main-container">
           <Header />
-          <div className="dashboard">
+          <div className="Dashboard">
             <Switch>
               {routes.map((prop, key) => {
                 if (prop.redirect)

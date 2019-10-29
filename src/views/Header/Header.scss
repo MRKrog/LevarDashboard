@@ -1,10 +1,10 @@
 .Header {
   display: flex;
   align-items: center;
-  padding: 0 2em;
+  padding: 0 1em;
   // justify-content: center;
-  background: #cacaca;
-  height: 50px;
+  // background: #cacaca;
+  // height: 50px;
   border-bottom: solid 1px #cccccc;
 
   .LevarIcon {
@@ -24,7 +24,7 @@
     justify-content: flex-end;
 
     .MuiIconButton-root {
-      padding: 5px;
+      padding: 01px;
     }
 
     .AccountIcon {

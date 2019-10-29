@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import OverviewTable from "./OverviewTable/OverviewTable";
+import OverviewCarousel from "./OverviewCarousel/OverviewCarousel";
 import Loading from "../../../components/Loading/Loading";
 
 import { connect } from "react-redux";
 import { setLoading } from "../../../redux/actions/loading";
-
 
 class Overview extends Component {
   componentDidMount() {
@@ -23,7 +23,10 @@ class Overview extends Component {
           loading ? (
             <Loading />
           ) : (
-            <OverviewTable />
+            <div className="OverviewContent">
+              <OverviewCarousel />
+              <OverviewTable />
+            </div>
           )
         }
       </div>

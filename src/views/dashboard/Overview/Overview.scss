@@ -1,0 +1,59 @@
+.Overview {
+  width: 100%;
+  height: 100%;
+
+  .OverviewContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .OverviewCarousel {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+
+    .CarouselContainer {
+      width: 33%;
+
+      .CarouselTitle {
+        background: #66767d;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom: solid 1px #797979;
+        padding: 5px;
+
+        h3 {
+          color: #fff;
+          margin: 0;
+        }
+      }
+
+      .CarouselBody {
+        border-bottom: solid 1px #000;
+        border-left: solid 1px #000;
+        border-right: solid 1px #000;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+
+        .CarouselCopy {
+          padding: 1em;
+
+          h4 {
+            font-size: 1.2em;
+            margin: 0;
+          }
+
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
+
+  }
+}

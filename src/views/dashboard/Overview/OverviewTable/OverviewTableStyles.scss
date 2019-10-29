@@ -1,21 +1,23 @@
-.Overview {
-  position: relative;
-  background: #fff;
 
-  .OverviewTable {
-    position: relative;
-    background: #cccccc;
-
-    tbody {
-      padding: 0 10px;
-    }
-
-
-  }
-}
-
-
-.OverviewCarousel {
+.OverviewTable {
   position: relative;
   background: #cccccc;
+
+  .tableWrapper {
+    thead {
+      tr {
+        th {
+          padding: 10px;
+        }
+
+        th:first-child {
+          padding: 6px 6px 6px 16px;
+        }
+
+        th:last-child {
+          padding: 6px 16px 6px 6px;
+        }
+      }
+    }
+  }
 }

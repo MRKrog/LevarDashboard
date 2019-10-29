@@ -1,6 +1,5 @@
 .ProductsTable {
   position: relative;
-  background: #000;
 
   .tableWrapper {
 
@@ -9,6 +8,10 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+    }
+
+    th {
+      padding: 10px;
     }
 
     th:nth-child(2), td:nth-child(2) {
@@ -38,7 +41,5 @@
     .thumbnail {
       max-width: 50px;
     }
-
   }
-
 }

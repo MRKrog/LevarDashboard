@@ -1,4 +1,3 @@
-// import { headCells, recommendData } from '../OverviewUtility';
 import { makeStyles } from '@material-ui/core/styles';
 
 export const headCells = [
@@ -20,7 +19,7 @@ export const useStyles = makeStyles(theme => ({
     width: '100%',
   },
   table: {
-    minWidth: 750,
+    width: '100%',
   },
   tableWrapper: {
     overflowX: 'auto',

@@ -55,8 +55,7 @@ export default function ProductsTable(props) {
         <div className="tableWrapper">
           <Table className={classes.table}
             aria-labelledby="tableTitle"
-            aria-label="enhanced table sticky"
-            stickyHeader
+            aria-label="enhanced table"
           >
             <EnhancedTableHead rowCount={recommendData.length} />
             <TableBody>

@@ -1,0 +1,28 @@
+.AssetPipeline {
+  position: relative;
+  background: #000;
+
+  .AssetTable {
+    
+    .subTitle {
+      font-size: 12px;
+    }
+  }
+
+  thead {
+    tr {
+      th {
+        padding: 10px;
+      }
+
+      th:first-child {
+        padding: 6px 6px 6px 16px;
+      }
+
+      th:last-child {
+        padding: 6px 16px 6px 6px;
+      }
+    }
+  }
+
+}

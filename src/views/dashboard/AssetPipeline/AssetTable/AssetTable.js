@@ -10,7 +10,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 
-import { useStyles, headCells, recommendData } from '../OverviewUtility';
+import { useStyles, headCells, recommendData } from '../AssetUtility';
 
 function EnhancedTableHead(props) {
 
@@ -45,11 +45,11 @@ export default function ProductsTable(props) {
   };
 
   return (
-    <div className="OverviewTable">
+    <div className="AssetTable">
       <Paper>
         <Toolbar className="tableHeaderTop">
           <Typography className="tableHeader" variant="h6">
-            Asset Creation Recommendations
+            levAR Art Pipeline <span className="subTitle">The status of your 3D assets</span>
           </Typography>
         </Toolbar>
         <div className="tableWrapper">
@@ -67,14 +67,10 @@ export default function ProductsTable(props) {
                     tabIndex={-1}
                     key={row.id}
                   >
-                    <TableCell>{row.item}</TableCell>
-                    <TableCell>{row.orders}</TableCell>
-                    <TableCell>{row.sales}</TableCell>
-                    <TableCell>{row.returns}</TableCell>
-                    <TableCell>{row.returnsMake}</TableCell>
-                    <TableCell>{row.price}</TableCell>
-                    <TableCell>{row.reason}</TableCell>
-                    <TableCell>{row.threeD}</TableCell>
+                    <TableCell>{row.title}</TableCell>
+                    <TableCell>{row.requested}</TableCell>
+                    <TableCell>{row.status}</TableCell>
+                    <TableCell>{row.completed}</TableCell>
                   </TableRow>
                 );
               })

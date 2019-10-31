@@ -17,7 +17,7 @@ class AssetPipeline extends Component {
     const { loading } = this.props;
 
     return (
-      <div className="AssetPipeline tableContent">
+      <div className="AssetPipeline">
         {
           loading ? (
             <Loading />

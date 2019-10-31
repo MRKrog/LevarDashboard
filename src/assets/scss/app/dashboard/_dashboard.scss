@@ -1,10 +1,13 @@
 .Dashboard {
   height: 95vh;
-  padding: 1em;
+  padding: 2em;
 
   .tableContent {
     position: relative;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     width: 100%;
+    box-shadow: 0px 3px 5px 1px #00000026;
 
     .MuiToolbar-gutters {
       padding-left: 1em;

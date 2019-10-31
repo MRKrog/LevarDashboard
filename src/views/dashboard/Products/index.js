@@ -10,28 +10,28 @@ import { testVendor } from '../../../testProductData.js'
 
 class Products extends Component {
   componentDidMount() {
-    const { setLoading } = this.props;
-    setLoading(true);
-    this.getAllOrders()
-    setLoading(false);
+    // const { setLoading } = this.props;
+    // setLoading(true);
+    // this.getAllOrders()
+    // setLoading(false);
   }
 
-  getAllOrders = async () => {
-    const url = 'https://search-levar-qafpkbpkozcch6cltgihl6z6de.us-east-1.es.amazonaws.com/_search';
-    try {
-      const response = await fetch(url)
-      const data = await response.json()
-      console.log('data', data);
-    } catch(error) {
-      console.log(error.message);
-    }
-  }
+  // getAllOrders = async () => {
+  //   const url = 'https://search-levar-qafpkbpkozcch6cltgihl6z6de.us-east-1.es.amazonaws.com/_search';
+  //   try {
+  //     const response = await fetch(url)
+  //     const data = await response.json()
+  //     console.log('data', data);
+  //   } catch(error) {
+  //     console.log(error.message);
+  //   }
+  // }
 
   render() {
     const { loading } = this.props;
 
     return (
-      <div className="Products tableContent">
+      <div className="Products">
         {
           loading ? (
             <Loading />

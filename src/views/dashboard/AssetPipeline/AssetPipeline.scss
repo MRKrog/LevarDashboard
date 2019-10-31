@@ -1,9 +1,11 @@
 .AssetPipeline {
   position: relative;
-  background: #000;
 
   .AssetTable {
-    
+    .MuiPaper-root {
+
+    }
+
     .subTitle {
       font-size: 12px;
     }

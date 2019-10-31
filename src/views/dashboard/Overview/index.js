@@ -18,7 +18,7 @@ class Overview extends Component {
     const { loading } = this.props;
 
     return (
-      <div className="Overview tableContent">
+      <div className="Overview">
         {
           loading ? (
             <Loading />

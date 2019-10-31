@@ -45,7 +45,7 @@ export default function ProductsTable(props) {
   };
 
   return (
-    <div className="OverviewTable">
+    <div className="OverviewTable tableContent">
       <Paper>
         <Toolbar className="tableHeaderTop">
           <Typography className="tableHeader" variant="h6">

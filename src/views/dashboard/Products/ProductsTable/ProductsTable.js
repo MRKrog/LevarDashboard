@@ -81,7 +81,7 @@ export default function ProductsTable(props) {
   };
 
   return (
-    <div className="ProductsTable">
+    <div className="ProductsTable tableContent">
       <Paper>
         <Toolbar className="tableHeaderTop">
           <Typography className="tableHeader" variant="h6">

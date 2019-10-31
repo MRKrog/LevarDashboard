@@ -1,14 +1,9 @@
 import React, { Component } from "react";
-// import SimpleReactValidator from "simple-react-validator";
 import SidebarAuth from "../layouts/sidebar-auth";
 import { Link } from "react-router-dom";
 import { Auth } from "aws-amplify";
 
-import { connect } from "react-redux";
-import { setAuthorization } from "../../redux/actions/authorization";
-import { setLoading } from "../../redux/actions/loading";
-
-export class Login extends Component {
+export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,24 +31,34 @@ export class Login extends Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-    const { setLoading, setAuthorization } = this.props;
 
     try {
       const data = await Auth.signIn(this.state.name, this.state.password);
-      await setAuthorization(data.signInUserSession.idToken.jwtToken)
-      console.log('JWT Token', data.signInUserSession.idToken.jwtToken)
-
-      // From AWS Amplify tutorial
+      console.log('successful sign in', data)
       // this.props.userHasAuthenticated(true);
-      this.props.history.push("/dashboard");
+      this.props.history.push("/setup-wizard");
 
-
+      // this.props.history.push('/');
     } catch (error) {
       alert(error.message);
       // this.setState({ isLoading: false });
     }
   }
 
+  // handleSubmit = async (event) => {
+  // event.preventDefault();
+  //
+  // this.setState({ isLoading: true });
+  //
+  // try {
+  //   await Auth.signIn(this.state.email, this.state.password);
+  //   this.props.userHasAuthenticated(true);
+  //   this.props.history.push('/');
+  // } catch (e) {
+  //   alert(e.message);
+  //   this.setState({ isLoading: false });
+  // }
+  // };
 
   render() {
     return (
@@ -91,12 +96,12 @@ export class Login extends Component {
                 />
               </div>
               <div className="submit-button d-block">
-                <input type="submit" value="Login" />
+                <input type="submit" value="Sign Up" />
               </div>
             </form>
             <div className="col-12 mt-5">
               <Link to="/">Forgot Password</Link>
-              <Link to="/Signup">Signup</Link>
+              <Link to="/login">Sign In</Link>
             </div>
           </div>
         </div>
@@ -105,14 +110,3 @@ export class Login extends Component {
     );
   }
 }
-
-export const mapStateToProps = state => ({
-  loading: state.loading,
-});
-
-export const mapDispatchToProps = dispatch => ({
-  setLoading: data => dispatch(setLoading(data)),
-  setAuthorization: data => dispatch(setAuthorization(data)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);

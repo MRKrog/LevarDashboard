@@ -6,7 +6,13 @@ export default {
     cognito: {
         REGION: 'us-east-1',
         USER_POOL_ID: 'us-east-1_uO49dU0yW',
-        APP_CLIENT_ID: '49kg2mb5v9tamsbobbe25tk024',
+        APP_CLIENT_ID: '680btpgdg9jvfkgv3b859tb2r3',
         IDENTITY_POOL_ID: 'us-east-1:aee71dbb-8574-4c41-8d96-843236a9e008'
     }
 };
+
+
+// https://login.levarstaging.com/login?
+// client_id=49kg2mb5v9tamsbobbe25tk024
+// &response_type=token&scope=email+openid&
+// redirect_uri=https://dashboard.levarstaging.com/login

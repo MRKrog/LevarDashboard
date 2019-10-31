@@ -1,19 +1,26 @@
 import SetupWizard from "./views/setup-wizard";
 import Login from "./views/auth/login";
+import Signup from "./views/auth/signup";
 import Dashboard from "./views/Dashboard";
 
 const routes = [
     {
-        path: "/setup-wizard",
-        name: "SetupWizard",
-        dashboard: true,
-        component: SetupWizard
+      path: "/setup-wizard",
+      name: "SetupWizard",
+      dashboard: true,
+      component: SetupWizard
     },
     {
-        path: "/login",
-        name: "Login",
-        dashboard: false,
-        component: Login
+      path: "/signup",
+      name: "Signup",
+      dashboard: false,
+      component: Signup
+    },
+    {
+      path: "/login",
+      name: "Login",
+      dashboard: false,
+      component: Login
     },
     {
       path: "/Dashboard",

@@ -2,23 +2,27 @@ import React, { Component } from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 import routes from "./routes";
 import { connect } from "react-redux";
-
-import { setLoading } from "../../redux/actions/loading";
-
+import { Auth } from "aws-amplify";
 import SideBarDrawer from "../SideBarDrawer/SideBarDrawer";
 import Header from "../Header/Header";
-// import Test from "./test";
+import { setLoading } from "../../redux/actions/loading";
+import { storeProducts } from "../../redux/actions/storeProducts";
 
 class Dashboard extends Component {
+
   componentDidMount() {
-    const { setLoading } = this.props;
-    setLoading(true);
-    this.getAllProducts()
-    setLoading(false);
+    const { setLoading, isAuthenticated } = this.props;
+
+    if(!isAuthenticated){
+      this.props.history.push("/login");
+    } else {
+      setLoading(true);
+      this.getAllProducts()
+    }
   }
 
   getAllProducts = async () => {
-    const { authorization } = this.props;
+    const { authorization, storeProducts, setLoading } = this.props;
     console.log("authorization on dashboard", authorization);
 
     const url = 'https://eo9muwoz3m.execute-api.us-east-1.amazonaws.com/dev/products';
@@ -35,6 +39,8 @@ class Dashboard extends Component {
       const response = await fetch(url, options)
       console.log(response);
       const data = await response.json()
+      storeProducts(data.products)
+      setLoading(false);
       console.log('Products', data);
     } catch(error) {
       console.log(error.message);
@@ -80,11 +86,14 @@ class Dashboard extends Component {
 
 export const mapStateToProps = state => ({
   loading: state.loading,
-  authorization: state.authorization
+  products: state.products,
+  authorization: state.authorization,
+  isAuthenticated: state.isAuthenticated,
 });
 
 export const mapDispatchToProps = dispatch => ({
   setLoading: data => dispatch(setLoading(data)),
+  storeProducts: data => dispatch(storeProducts(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

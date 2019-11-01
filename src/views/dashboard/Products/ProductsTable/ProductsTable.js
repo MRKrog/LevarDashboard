@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ButtonStatus from '../ButtonStatus/ButtonStatus';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -13,6 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
+import { connect } from "react-redux";
 
 import { useStyles, headCells, stableSort, getSorting } from '../ProductsUtility';
 
@@ -57,9 +57,9 @@ function EnhancedTableHead(props) {
   );
 }
 
-export default function ProductsTable(props) {
+function ProductsTable(props) {
   const classes = useStyles();
-  const [ { products, vendor } ] = React.useState(props.productData);
+  // const [ { products, vendor } ] = React.useState(props.productData);
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('title');
   const [page, setPage] = React.useState(0);
@@ -85,7 +85,7 @@ export default function ProductsTable(props) {
       <Paper>
         <Toolbar className="tableHeaderTop">
           <Typography className="tableHeader" variant="h6">
-            {vendor} Products
+            Products
           </Typography>
         </Toolbar>
         <div className={`${classes.tableWrapper} tableWrapper`}>
@@ -100,10 +100,10 @@ export default function ProductsTable(props) {
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
-              rowCount={products.length}
+              rowCount={props.products.length}
             />
             <TableBody>
-              {stableSort(products, getSorting(order, orderBy))
+              {stableSort(props.products, getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   return (
@@ -138,7 +138,7 @@ export default function ProductsTable(props) {
         <TablePagination
           rowsPerPageOptions={[15, 25]}
           component="div"
-          count={products.length}
+          count={props.products.length}
           rowsPerPage={rowsPerPage}
           page={page}
           backIconButtonProps={{
@@ -154,3 +154,9 @@ export default function ProductsTable(props) {
     </div>
   );
 }
+
+export const mapStateToProps = state => ({
+  products: state.products,
+});
+
+export default connect(mapStateToProps, null)(ProductsTable);

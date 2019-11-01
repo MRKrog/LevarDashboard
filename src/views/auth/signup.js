@@ -101,7 +101,7 @@ export default class Login extends Component {
             </form>
             <div className="col-12 mt-5">
               <Link to="/">Forgot Password</Link>
-              <Link to="/login">Sign In</Link>
+              <Link to="/login">Login</Link>
             </div>
           </div>
         </div>

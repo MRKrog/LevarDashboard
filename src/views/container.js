@@ -6,7 +6,6 @@ class Container extends Component {
     this.unlisten = this.props.history.listen((location, action) => {
       console.log("on route change");
     });
-    
     this.unlisten();
   }
 

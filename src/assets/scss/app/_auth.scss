@@ -1,6 +1,29 @@
-.auth {
+.auth-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .background-image {
+  	position: absolute;
+  	left: 0;
+  	right: 0;
+  	top: 0;
+  	bottom: 0;
+  	background-size: cover;
+    background-position: center;
+  	z-index:1;
+  	-webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+  }
+
+  .auth {
     max-width: 500px;
     margin: auto;
+    z-index: 9;
 
     .page-logo {
         justify-content: center;
@@ -18,10 +41,11 @@
     }
 
     form {
+
         .form-group {
             height: 100px;
         }
-    
+
         .submit-button {
             margin-top: 15px;
             text-align: center;
@@ -35,4 +59,5 @@
         color: #ababab;
         text-decoration: underline;
     }
+  }
 }

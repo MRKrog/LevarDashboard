@@ -22,15 +22,18 @@ class Dashboard extends Component {
     console.log("authorization on dashboard", authorization);
 
     const url = 'https://eo9muwoz3m.execute-api.us-east-1.amazonaws.com/dev/products';
+
     const options = {
       headers: {
         'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
         'Authorization': `${authorization}`
       },
     }
 
     try {
       const response = await fetch(url, options)
+      console.log(response);
       const data = await response.json()
       console.log('Products', data);
     } catch(error) {

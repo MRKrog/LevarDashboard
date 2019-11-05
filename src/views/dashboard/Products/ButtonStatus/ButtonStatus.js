@@ -33,7 +33,10 @@ class ButtonStatus extends Component {
           </button>)
         break;
       default:
-        console.log('Not Found');
+      buttonStatus = (
+        <button className="finished">
+          <img alt="Finished" src={arcube}></img>
+        </button>)
     }
     return buttonStatus
   }

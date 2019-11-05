@@ -1,112 +1,127 @@
 import React, { Component } from "react";
-import SidebarAuth from "../layouts/sidebar-auth";
 import { Link } from "react-router-dom";
-import { Auth } from "aws-amplify";
+import Amplify, { Auth, Hub } from "aws-amplify";
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Verify from '../../components/Verify/Verify';
+
+import bgImage from "../../assets/images/backgroundImage/arSignin.jpg";
+
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
-      password: ""
+      password: "",
+      isVerified: null,
     };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
-    // this.validator = new SimpleReactValidator({ autoForceUpdate: this });
-  }
-
-  handleInputChange(event, name) {
-    const target = event.target;
-    const value = target.value;
-
-    this.setState({
-      [name]: value
-    });
   }
 
   // daniel.esrig@levar.co
   // 57hsDiBl!
 
-  async handleSubmit(event) {
+  componentDidMount(){
+    // console.log('on component mount');
+    // check the current user when the App component is loaded
+    // Auth.currentAuthenticatedUser().then(user => {
+    //   console.log(user);
+    //   this.setState({authState: 'signedIn'});
+    // }).catch(e => {
+    //   console.log(e);
+    //   this.setState({authState: 'signIn'});
+    // });
+  }
+
+  checkVerified = async () => {
+    const { isVerified } = this.state;
+    // if()
+    let info = await Auth.currentUserInfo();
+    console.log('info', info);
+    // let result = await Auth.verifyCurrentUserAttributeSubmit(this.state.name, 'abc123');
+    // console.log('in check');
+    // this.props.history.push("/setup-wizard");
+  }
+
+  handleInputChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+     [name]: value
+    })
+  }
+
+  handleSubmit = async (event) => {
     event.preventDefault();
-
     try {
-      const data = await Auth.signIn(this.state.name, this.state.password);
-      console.log('successful sign in', data)
-      // this.props.userHasAuthenticated(true);
-      this.props.history.push("/setup-wizard");
+      const newUser = await Auth.signUp({
+        username: this.state.name,
+        password: this.state.password
+      });
 
-      // this.props.history.push('/');
-    } catch (error) {
-      alert(error.message);
-      // this.setState({ isLoading: false });
+      const data = await Auth.signIn(this.state.name, this.state.password);
+
+      console.log('new user', newUser);
+      console.log('sign in user', data);
+      
+      const userStatus = await newUser.userConfirmed
+      this.setState({
+        isVerified: userStatus
+      })
+
+
+      // this.props.history.push("/setup-wizard");
+    } catch (e) {
+      alert(e.message);
     }
   }
 
-  // handleSubmit = async (event) => {
-  // event.preventDefault();
-  //
-  // this.setState({ isLoading: true });
-  //
-  // try {
-  //   await Auth.signIn(this.state.email, this.state.password);
-  //   this.props.userHasAuthenticated(true);
-  //   this.props.history.push('/');
-  // } catch (e) {
-  //   alert(e.message);
-  //   this.setState({ isLoading: false });
-  // }
-  // };
-
   render() {
     return (
-      <>
-        <div className="main-container">
-          <div className="auth">
-            <div className="page-logo mt-4">
-              <img
-                src={require("../../assets/images/levarlogo_black.png")}
-                alt="logo"
-              ></img>
+      <div className="auth-container">
+        <div className="background-image" style={{ backgroundImage: `url(${bgImage})` }}></div>
+        <div className="auth">
+          <div className="page-logo">
+            <img src={require("../../assets/images/levarlogo_white.png")} alt="logo"></img>
+          </div>
+          <form noValidate autoComplete="off" onSubmit={this.handleSubmit}>
+            <div>
+              <TextField
+                id="outlined-basic"
+                label="Username"
+                margin="normal"
+                variant="outlined"
+                type="text"
+                name="name"
+                value={this.state.name}
+                onChange={this.handleInputChange}
+              />
             </div>
-            <div className="page-title col-12 text-center">
-              Enter your login to get started
+            <div>
+              <TextField
+                id="outlined-basic"
+                label="Password"
+                margin="normal"
+                variant="outlined"
+                type="text"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleInputChange}
+              />
             </div>
-            <form onSubmit={this.handleSubmit}>
-              <div className="form-group col-12">
-                <input
-                  className="form-control"
-                  type="text"
-                  name="username"
-                  placeholder="Username"
-                  value={this.state.name}
-                  onChange={event => this.handleInputChange(event, "name")}
-                />
-              </div>
-              <div className="form-group col-12">
-                <input
-                  className="form-control"
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={this.state.password}
-                  onChange={event => this.handleInputChange(event, "password")}
-                />
-              </div>
-              <div className="submit-button d-block">
-                <input type="submit" value="Sign Up" />
-              </div>
-            </form>
-            <div className="col-12 mt-5">
-              <Link to="/">Forgot Password</Link>
-              <Link to="/login">Login</Link>
+            <div className="submit-button">
+              <Button type="submit" variant="contained">Sign Up</Button>
             </div>
+          </form>
+          <div className="form-update">
+            <Link to="/login">Login</Link>
+            <Link to="/">Forgot Password</Link>
           </div>
         </div>
-        <SidebarAuth />
-      </>
+        {
+          this.state.isVerified === false &&
+          <Verify handleVerify={this.checkVerified} />
+        }
+      </div>
     );
   }
 }

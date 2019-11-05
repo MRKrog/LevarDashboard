@@ -12,6 +12,8 @@ import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import Tooltip from '@material-ui/core/Tooltip';
 import Zoom from '@material-ui/core/Zoom';
+
+import { thumb } from '../../../../assets/images/thumbEx.svg'
 import { connect } from "react-redux";
 
 import { useStyles, headCells, stableSort, getSorting } from '../ProductsUtility';
@@ -59,7 +61,7 @@ function EnhancedTableHead(props) {
 
 function ProductsTable(props) {
   const classes = useStyles();
-  // const [ { products, vendor } ] = React.useState(props.productData);
+  const [ { products, vendor } ] = React.useState(props.productData);
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('title');
   const [page, setPage] = React.useState(0);
@@ -85,7 +87,7 @@ function ProductsTable(props) {
       <Paper>
         <Toolbar className="tableHeaderTop">
           <Typography className="tableHeader" variant="h6">
-            Products
+            Converse Products
           </Typography>
         </Toolbar>
         <div className={`${classes.tableWrapper} tableWrapper`}>
@@ -100,10 +102,10 @@ function ProductsTable(props) {
               order={order}
               orderBy={orderBy}
               onRequestSort={handleRequestSort}
-              rowCount={props.products.length}
+              rowCount={products.length}
             />
             <TableBody>
-              {stableSort(props.products, getSorting(order, orderBy))
+              {stableSort(products, getSorting(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((row, index) => {
                   return (
@@ -114,14 +116,14 @@ function ProductsTable(props) {
                       <TableCell>
                         <img className="thumbnail" src={require("../../../../assets/images/thumbEx.svg")} alt="logo" />
                       </TableCell>
-                      <Tooltip title={row.title}
+                      <Tooltip title={row.product_title}
                                enterDelay={1000}
                                leaveDelay={100}
                                placement="right"
                                TransitionComponent={Zoom}>
-                        <TableCell>{row.title}</TableCell>
+                        <TableCell>{row.product_title}</TableCell>
                       </Tooltip>
-                      <TableCell>{row.variant}</TableCell>
+                      <TableCell>{row.variant_title}</TableCell>
                       <TableCell>{row.vendor}</TableCell>
                       <TableCell>{row.type}</TableCell>
                       <TableCell>{row.salesRank} of 100</TableCell>
@@ -138,7 +140,7 @@ function ProductsTable(props) {
         <TablePagination
           rowsPerPageOptions={[15, 25]}
           component="div"
-          count={props.products.length}
+          count={products.length}
           rowsPerPage={rowsPerPage}
           page={page}
           backIconButtonProps={{
@@ -156,7 +158,7 @@ function ProductsTable(props) {
 }
 
 export const mapStateToProps = state => ({
-  products: state.products,
+  // products: state.products,
 });
 
 export default connect(mapStateToProps, null)(ProductsTable);

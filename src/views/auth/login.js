@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Auth } from "aws-amplify";
 
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
@@ -11,6 +10,7 @@ import { setAuthorization } from "../../redux/actions/authorization";
 import { setLoading } from "../../redux/actions/loading";
 import { setLoginStatus } from "../../redux/actions/setLogin";
 
+import { useStyles } from "./authUtility.js"
 import bgImage from "../../assets/images/backgroundImage/arBG.jpg"
 
 
@@ -20,21 +20,9 @@ export class Login extends Component {
     this.state = {
       name: "",
       password: "",
-      status: ''
+      status: "",
     };
-
-    // this.handleInputChange = this.handleInputChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  // handleInputChange = (event, name) => {
-  //   const target = event.target;
-  //   const value = target.value;
-  //
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // }
 
   handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -48,6 +36,7 @@ export class Login extends Component {
 
   // ben.cully@levar.co
   // Geneva123#
+  
   handleSubmit = async (event) => {
     event.preventDefault();
     const { setLoading, setAuthorization } = this.props;
@@ -78,7 +67,6 @@ export class Login extends Component {
           <form noValidate autoComplete="off" onSubmit={this.handleSubmit}>
             <div>
               <TextField
-                id="outlined-basic"
                 label="Username"
                 margin="normal"
                 variant="outlined"
@@ -90,11 +78,10 @@ export class Login extends Component {
             </div>
             <div>
               <TextField
-                id="outlined-basic"
                 label="Password"
                 margin="normal"
                 variant="outlined"
-                type="text"
+                type="password"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChange}
@@ -104,9 +91,9 @@ export class Login extends Component {
               <Button type="submit" variant="contained">Login</Button>
             </div>
           </form>
-          <div className="col-12 mt-5">
+          <div className="form-update">
+            <Link to="/Signup">Sign Up</Link>
             <Link to="/">Forgot Password</Link>
-            <Link to="/Signup">Signup</Link>
           </div>
         </div>
       </div>

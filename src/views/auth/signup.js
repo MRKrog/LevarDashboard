@@ -8,36 +8,48 @@ import Verify from '../../components/Verify/Verify';
 import bgImage from "../../assets/images/backgroundImage/arSignin.jpg";
 
 
-export default class Login extends Component {
+export default class Signup extends Component {
   constructor(props) {
     super(props);
+    Hub.listen('auth', (data) => {
+    const { payload } = data;
+    this.onAuthEvent(payload);
+      console.log('A new auth event has happened: ', data.payload.data.username + ' has ' + data.payload.event);
+    })
     this.state = {
       name: "",
       password: "",
       isVerified: null,
+      test: 1
     };
+  }
+
+  onAuthEvent(payload) {
+    console.log('payload', payload);
+    // ... your implementation
   }
 
   // daniel.esrig@levar.co
   // 57hsDiBl!
 
   componentDidMount(){
-    // console.log('on component mount');
-    // check the current user when the App component is loaded
-    // Auth.currentAuthenticatedUser().then(user => {
-    //   console.log(user);
-    //   this.setState({authState: 'signedIn'});
-    // }).catch(e => {
-    //   console.log(e);
-    //   this.setState({authState: 'signIn'});
-    // });
+    Hub.listen(/.*/, (data) => {
+      console.log('Listening for all messages: ', data.payload.data)
+    })
   }
 
   checkVerified = async () => {
     const { isVerified } = this.state;
-    // if()
-    let info = await Auth.currentUserInfo();
-    console.log('info', info);
+
+    Hub.listen(/.*/, (data) => {
+      console.log('Listening for all messages: ', data.payload.data)
+    })
+
+    this.setState({
+      test: this.state.test + 1
+    })
+
+    console.log('info new');
     // let result = await Auth.verifyCurrentUserAttributeSubmit(this.state.name, 'abc123');
     // console.log('in check');
     // this.props.history.push("/setup-wizard");
@@ -58,18 +70,12 @@ export default class Login extends Component {
         password: this.state.password
       });
 
-      const data = await Auth.signIn(this.state.name, this.state.password);
-
       console.log('new user', newUser);
-      console.log('sign in user', data);
-      
+
       const userStatus = await newUser.userConfirmed
       this.setState({
         isVerified: userStatus
       })
-
-
-      // this.props.history.push("/setup-wizard");
     } catch (e) {
       alert(e.message);
     }

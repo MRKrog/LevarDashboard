@@ -9,11 +9,11 @@ class SetupWizard extends Component {
     let path = "/setup-wizard";
     return (
       <>
-        <Sidebar />
+        <Sidebar {...this.props} />
         <div className="main-container">
           <div className="setup-wizard">
             <Progressbar {...this.props} />
-            <div className="container">
+            <div className="wizard-container">
               <Switch>
                 {routes.map((prop, key) => {
                   if (prop.redirect)

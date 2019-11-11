@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 import routes from "./routes";
 import { connect } from "react-redux";
-import { Auth } from "aws-amplify";
+// import { Auth } from "aws-amplify";
 import SideBarDrawer from "../SideBarDrawer/SideBarDrawer";
 import Header from "../Header/Header";
 import { setLoading } from "../../redux/actions/loading";

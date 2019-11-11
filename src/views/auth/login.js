@@ -10,7 +10,7 @@ import { setAuthorization } from "../../redux/actions/authorization";
 import { setLoading } from "../../redux/actions/loading";
 import { setLoginStatus } from "../../redux/actions/setLogin";
 
-import { useStyles } from "./authUtility.js"
+// import { useStyles } from "./authUtility.js"
 import bgImage from "../../assets/images/backgroundImage/arBG.jpg"
 
 
@@ -31,31 +31,26 @@ export class Login extends Component {
     })
   }
 
-  // daniel.esrig@levar.co
-  // 57hsDiBl!
-
-  // ben.cully@levar.co
-  // Geneva123#
-  
   handleSubmit = async (event) => {
     event.preventDefault();
     const { setLoading, setAuthorization } = this.props;
 
     try {
       const data = await Auth.signIn(this.state.name, this.state.password);
+      setLoading(true)
       await setAuthorization(data.signInUserSession.idToken.jwtToken)
+      setLoading(false)
       console.log('JWT Token', data)
       this.props.setLoginStatus(true);
       this.props.history.push("/dashboard");
     } catch (error) {
       alert(error.message);
-      // this.setState({ isLoading: false });
     }
   }
 
   render() {
 
-    const { name, password } = this.state;
+    // const { name, password } = this.state;
 
     return (
       <div className="auth-container">

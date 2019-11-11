@@ -1,79 +1,62 @@
 import React, { Component } from "react";
-import SimpleReactValidator from "simple-react-validator";
+import TextField from '@material-ui/core/TextField';
 
-export default class Final extends Component {
+class Final extends Component {
   constructor(props) {
     super(props);
     this.state = {
       store_url: ""
     };
-
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-
-    this.validator = new SimpleReactValidator({ autoForceUpdate: this });
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.props.history.push("/dashboard");
-  }
-
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
+  handleInputChange = (event) => {
+    const { name, value } = event.target
     this.setState({
       [name]: value
     });
   }
 
   render() {
+    const { store_url } = this.state;
     return (
-      <div className="final">
+      <div className="Final wizard-content">
         <div className="page-title">
           Almost there! Connect your store below.
         </div>
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group col-12">
-            <div className="product">
-              <div className="product-logo">
-                <img
-                  src={require("../../assets/images/shopify.png")}
-                  alt="shopify"
-                ></img>
-                <div className="product-label">
-                  Shopify
-                  <span>E-Commerce</span>
-                </div>
-              </div>
+        <div className="Final-Content">
+          <div className="Final-Product">
+            <img
+              src={require("../../assets/images/shopify.png")}
+              alt="shopify"
+            ></img>
+            <div className="Final-Label">
+              Shopify <span>E-Commerce</span>
             </div>
           </div>
-          <div className="form-group col-12">
-            <div className="shopify-url">
-              <input
-                className="form-control"
-                type="text"
-                name="store_url"
-                placeholder="Store URL"
-                value={this.state.store_url}
-                onChange={this.handleInputChange}
-                onBlur={() => this.validator.showMessageFor("store_url")}
-              />
-              <span> .myshopify.com</span>
+        </div>
+        <form onSubmit={this.handleSubmit} className="Wizard-Form">
+          <div className="Wizard-Input">
+            <TextField
+              id="outlined-basic"
+              label="Enter Store URL"
+              margin="normal"
+              variant="outlined"
+              type="text"
+              name="store_url"
+              value={this.state.store_url}
+              onChange={this.handleInputChange}
+            />
+            <div className="submit-button">
+              <a href={`https://7b50717d.ngrok.io/shopify?shop=${store_url}`}
+                 className="submit-link">
+                 Link Store
+              </a>
             </div>
-            {this.validator.message(
-              "store_url",
-              this.state.store_url,
-              "required"
-            )}
-          </div>
-          <div className="submit-button d-block">
-            <input type="submit" value="Next" />
           </div>
         </form>
       </div>
     );
   }
 }
+
+export default Final;

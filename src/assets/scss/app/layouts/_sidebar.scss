@@ -1,4 +1,4 @@
-.sidebar {
+.wizard-sidebar {
   min-width: $sidebarWidth;
   height: 100%;
   background-color: $sidebarAccentColor;
@@ -10,16 +10,19 @@
 
     .logo {
       width: 100%;
+      display: flex;
+
+      a {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
 
       img {
         width: $logoWidth;
         margin-left: 10px;
       }
-    }
-
-    .profile {
-      min-width: $sidebarProfileWidth;
-      background-color: $secondaryBtnColor;
     }
   }
 
@@ -86,6 +89,55 @@
     }
   }
 
+  .stepper-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+
+    .MuiStepLabel-label {
+      color: #ffffff59;
+      font-weight: 100;
+      letter-spacing: .04em;
+      font-family: $fontOswald;
+      font-size: 1.2em;
+    }
+
+    .MuiStepLabel-label.MuiStepLabel-completed {
+      color: #ffffff59;
+    }
+
+    .MuiStepLabel-label.MuiStepLabel-active {
+      color: #ffffffb8;
+    }
+
+    .MuiButton-outlined {
+      font-family: $fontAbel;
+      color: #ffffff59;
+      border: solid 1px #ffffff59;
+      text-transform: none;
+      padding: 5px;
+      line-height: 1;
+      opacity: .8;
+    }
+
+    .MuiSvgIcon-root {
+      color: #ffffff59;
+
+      .MuiStepIcon-text {
+        fill: rgba(0, 0, 0, 0.87);
+      }
+    }
+
+    .MuiStepContent-root {
+      border-left: 1px solid #ffffff59;
+    }
+
+    .MuiStepConnector-line {
+        border-color: #ffffff59;
+    }
+  }
+
   .grey-space {
     height: calc(
       100% - #{$sidebarHeaderHeight} - #{$menuContentHeight} - #{$addProductHeight}
@@ -103,5 +155,10 @@
     .header {
       background-color: $sidebarAccentColor;
     }
+  }
+
+  .MuiStepper-vertical {
+    flex-direction: column;
+    background: none;
   }
 }

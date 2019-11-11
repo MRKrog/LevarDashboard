@@ -14,7 +14,7 @@ class Progressbar extends Component {
       { url: "/setup-wizard/final", step: 4 }
     ];
 
-    this.setStep = this.setStep.bind(this);
+    // this.setStep = this.setStep.bind(this);
   }
 
   componentWillMount() {
@@ -31,7 +31,7 @@ class Progressbar extends Component {
     this.setStep(this.props.location.pathname);
   }
 
-  setStep(pathname) {
+  setStep = (pathname) => {
     console.log(pathname);
     let _route = this.routes.find(route => route.url === pathname);
     if (_route) {

@@ -2,6 +2,7 @@
 
 $fontOswald: 'Oswald', sans-serif;
 $fontAbel: 'Abel', sans-serif;
+$fontRoboto: 'Roboto', sans-serif;
 
 // ------------------------------------ Colors -----------------------------------
 
@@ -11,9 +12,10 @@ $sidebarAccentColor: #4c4c4c;
 
 // main colors
 $mainColor: #dee9ee;
-$progressbarColor: #000;
+$progressbarColor: #2196f378;
 
 // button colors
+$wizardBtnColor: #2196F3;
 $secondaryBtnColor: #66767d;
 $primaryBtnColor: #61badf;
 
@@ -35,6 +37,6 @@ $menuContentHeight: 450px;
 $addProductHeight: 75px;
 
 // dashboard
-$progressbarHeight: 13px;
+$progressbarHeight: 8px;
 $pageTitleSize: 32px;
 $pageTitleWeight: 600;

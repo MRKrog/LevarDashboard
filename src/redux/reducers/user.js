@@ -1,5 +1,3 @@
-import { UPDATE_USER } from "../types/user";
-
 const initialState = {
   user: {
     id: null,
@@ -19,7 +17,8 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case UPDATE_USER:
+    case "UPDATE_USER":
+      console.log("action", action);
       return {
         ...state,
         user: Object.assign(state.user, action.payload)

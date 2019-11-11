@@ -61,7 +61,7 @@ function EnhancedTableHead(props) {
 
 function ProductsTable(props) {
   const classes = useStyles();
-  const [ { products, vendor } ] = React.useState(props.productData);
+  const [ { products, vendor } ] = React.useState(props);
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('title');
   const [page, setPage] = React.useState(0);
@@ -111,7 +111,7 @@ function ProductsTable(props) {
                   return (
                     <TableRow
                       tabIndex={-1}
-                      key={row.id}
+                      key={row.variant_id}
                     >
                       <TableCell>
                         <img className="thumbnail" src={require("../../../../assets/images/thumbEx.svg")} alt="logo" />
@@ -158,7 +158,7 @@ function ProductsTable(props) {
 }
 
 export const mapStateToProps = state => ({
-  // products: state.products,
+  products: state.products,
 });
 
 export default connect(mapStateToProps, null)(ProductsTable);

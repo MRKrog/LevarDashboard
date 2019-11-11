@@ -1,170 +1,172 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import React, { Component } from "react";
 
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
-import Products from "./products";
+import SimpleReactValidator from "simple-react-validator";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/dist/style.css";
+import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
+import { updateUser } from "../../redux/actions/user";
+import { connect } from "react-redux";
 
-const drawerWidth = 240;
+class BusinessInfo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      phone_number: "",
+      address: "",
+      state: "",
+      zip: "",
+      country: "United States"
+    };
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: 36,
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-  },
-  drawerOpen: {
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerClose: {
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflowX: 'hidden',
-    width: theme.spacing(7) + 1,
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9) + 1,
-    },
-  },
-  toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    ...theme.mixins.toolbar,
-  },
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(3),
-  },
-}));
+    // this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleValueChange = this.handleValueChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
 
-export default function MiniDrawer() {
-  const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+    this.validator = new SimpleReactValidator({ autoForceUpdate: this });
+  }
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
+  handleInputChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  }
 
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
+  handleValueChange(name, value) {
+    console.log(value);
+    this.setState({
+      [name]: value
+    });
 
-  return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
-            })}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            Mini variant drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        })}
-        classes={{
-          paper: clsx({
-            [classes.drawerOpen]: open,
-            [classes.drawerClose]: !open,
-          }),
-        }}
-        open={open}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
+    if (name === "country") {
+      this.setState({
+        state: ""
+      });
+    }
+  }
+
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    const { phone_number, address, state, zip, country } = this.state;
+    const { email } = this.props;
+    const url = "http://localhost:3000/api/v1/step2";
+
+      const fetchOptions = {
+        method: "POST",
+        body: JSON.stringify({ phone_number, address, state, zip, country }),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      }
+
+      try {
+        const response = await fetch(url, fetchOptions)
+        console.log('response', response);
+        if(!response.ok) { throw new Error(`Fetch Call Cannot Be Made`)}
+        const data = await response.json();
+        console.log('data', data);
+        this.props.history.push("/setup-wizard/integration");
+        return data;
+      } catch (error) {
+        console.log('error', error);
+        return error;
+      }
+      // this.props.updateUser(this.state);
+  }
+
+  render() {
+    return (
+      <div className="business-info wizard-content">
+        <div className="page-title">
+          Just a little more information
         </div>
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <Products />
-      </main>
-    </div>
-  );
+        <form onSubmit={this.handleSubmit} className="Wizard-Form">
+          <div className="Wizard-Input">
+            <PhoneInput
+              autoFormat={false}
+              defaultCountry='us'
+              countryCodeEditable={false}
+              value={this.state.phone_number}
+              onChange={val => this.handleValueChange("phone_number", val)}
+              onBlur={() => this.validator.showMessageFor("phone_number")}
+              placeholder="Phone Number"
+            />
+            {this.validator.message(
+              "phone_number",
+              this.state.phone_number,
+              "required|min:10|max:120"
+            )}
+
+            <input
+              type="text"
+              name="business address"
+              placeholder="Business Address"
+              value={this.state.address}
+              onChange={event =>
+                this.handleValueChange("address", event.target.value)
+              }
+              onBlur={() => this.validator.showMessageFor("business address")}
+            />
+          {this.validator.message(
+            "business address",
+            this.state.address,
+            "required"
+          )}
+
+
+            <CountryDropdown
+              defaultOptionLabel="Country"
+              className={
+                this.state.country === "" || this.state.country === ""
+                  ? "placeholder"
+                  : ""
+              }
+              value={this.state.country}
+              onChange={val => this.handleValueChange("country", val)}
+            />
+            {this.validator.message(
+              "country",
+              this.state.country,
+              "required"
+            )}
+            <RegionDropdown
+              ref={region => (this.regionSelection = region)}
+              blankOptionLabel="State"
+              defaultOptionLabel="State"
+              className={
+                this.state.state === "" || this.state.state === "State"
+                  ? "placeholder"
+                  : ""
+              }
+              country={this.state.country}
+              value={this.state.state}
+              onChange={val => this.handleValueChange("state", val)}
+            />
+            <TextField
+              id="outlined-basic"
+              label="Business Zip"
+              margin="normal"
+              variant="outlined"
+              type="text"
+              name="zip"
+              value={this.state.zip}
+              onChange={this.handleInputChange}
+            />
+            <div className="submit-button">
+              <Button type="submit" variant="contained" onClick={this.handleSubmit}>Next</Button>
+            </div>
+          </div>
+        </form>
+      </div>
+    );
+  }
 }
+
+const mapStateToProps = state => ({
+  user: state.user.user
+});
+
+export default connect(mapStateToProps, null)(BusinessInfo);

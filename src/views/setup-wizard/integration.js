@@ -1,72 +1,47 @@
 import React, { Component } from "react";
 
-export default class Integration extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+class Integration extends Component {
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     this.props.history.push("/setup-wizard/final");
   }
 
   render() {
     return (
-      <div className="integration">
+      <div className="Integration wizard-content">
         <div className="page-title">
           Great. Let’s integrate your product data.
         </div>
-        <div className="row p-0">
-          <div className="col-lg-4 col-md-6">
-            <div className="product" onClick={this.handleSubmit}>
-              <div className="product-logo">
-                <img
-                  src={require("../../assets/images/shopify.png")}
-                  alt="shopify"
-                ></img>
+        <div className="Integration-Content">
+          <div className="Integration-Product">
+            <div className="Product" onClick={this.handleSubmit}>
+              <div className="Product-logo">
+                <img src={require("../../assets/images/shopify.png")} alt="shopify"></img>
               </div>
-              <div className="product-label">
+              <div className="Product-label">
                 Shopify
                 <span>E-Commerse</span>
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6">
-            <div className="product disabled">
-              <div className="product-logo ">
-                <img
-                  src={require("../../assets/images/csv.png")}
-                  alt="csv"
-                ></img>
-                <p className="hover-label">
-                  Please contact{" "}
-                  <a href="https://support@levar.co">support@levar.co</a> for
-                  more information
-                </p>
+          <div className="Integration-Product">
+            <div className="Product disabled">
+              <div className="Product-logo">
+                <img src={require("../../assets/images/csv.png")} alt="csv"></img>
               </div>
-              <div className="product-label">
+              <div className="Product-label">
                 CSV Import
                 <span>Custom</span>
               </div>
             </div>
           </div>
-          <div className="col-lg-4 col-md-6">
-            <div className="product disabled">
-              <div className="product-logo">
-                <img
-                  src={require("../../assets/images/customapi.png")}
-                  alt="shopify"
-                ></img>
-                <p className="hover-label">
-                  Please contact{" "}
-                  <a href="https://support@levar.co">support@levar.co</a> for
-                  more information
-                </p>
+          <div className="Integration-Product">
+            <div className="Product disabled">
+              <div className="Product-logo">
+                <img src={require("../../assets/images/customapi.png")} alt="custom"></img>
               </div>
-              <div className="product-label">
+              <div className="Product-label">
                 API Integration
                 <span>Custom</span>
               </div>
@@ -77,3 +52,5 @@ export default class Integration extends Component {
     );
   }
 }
+
+export default Integration;

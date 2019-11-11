@@ -1,84 +1,88 @@
 import React, { Component } from "react";
-import SimpleReactValidator from "simple-react-validator";
-import { updateUser } from "../../redux/actions/user";
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 import { connect } from "react-redux";
+import * as actions from "../../redux/actions";
 
 class Welcome extends Component {
   constructor(props) {
     super(props);
     this.state = {
       business_name: "",
-      website_url: ""
+      website_url: "",
     };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-
-    this.validator = new SimpleReactValidator({ autoForceUpdate: this });
   }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
+  handleInputChange = (event) => {
+    const { name, value } = event.target;
     this.setState({
       [name]: value
     });
   }
 
-  handleSubmit(event) {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    if (this.validator.allValid()) {
-      this.props.updateUser(this.state);
+    const { business_name, website_url } = this.state;
+    const { updateUser, user, setLoading } = this.props;
+    // const url = "http://localhost:3000/api/v1/step1";
+    const url = "https://09v84ua8va.execute-api.us-east-1.amazonaws.com/dev/api/v1/step1";
+
+    const fetchOptions = {
+      method: "PUT",
+      body: JSON.stringify({ email: user.user.email, business_name, website_url }),
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    }
+
+    try {
+      setLoading(true);
+      const response = await fetch(url, fetchOptions)
+      console.log('response', response);
+      if(!response.ok) { throw new Error(`Fetch Call Cannot Be Made`)}
+      const data = await response.json();
+      console.log('data', data);
+      updateUser({ business_name, website_url })
+      setLoading(false);
       this.props.history.push("/setup-wizard/business-info");
-    } else {
-      this.validator.showMessages();
+      return data;
+    } catch (error) {
+      console.log('error', error);
+      return error;
     }
   }
 
   render() {
     return (
-      <div className="welcome">
-        <div className="page-title col-12">
-          Welcome! <br />
-          Let's get to know your Business.
+      <div className="Welcome wizard-content">
+        <div className="page-title">
+          Let's get to know your business.
         </div>
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group col-12">
-            <input
-              className="form-control"
+        <form onSubmit={this.handleSubmit} className="Wizard-Form">
+          <div className="Wizard-Input">
+            <TextField
+              id="outlined-basic"
+              label="Business Name"
+              margin="normal"
+              variant="outlined"
               type="text"
               name="business_name"
-              placeholder="Business Name"
               value={this.state.business_name}
               onChange={this.handleInputChange}
-              onBlur={() => this.validator.showMessageFor("business_name")}
             />
-            {this.validator.message(
-              "business_name",
-              this.state.business_name,
-              "required"
-            )}
-          </div>
-          <div className="form-group col-12">
-            <input
-              className="form-control"
+            <TextField
+              id="outlined-basic"
+              label="Website Address"
+              margin="normal"
+              variant="outlined"
               type="text"
               name="website_url"
-              placeholder="Website URL"
               value={this.state.website_url}
               onChange={this.handleInputChange}
-              onBlur={() => this.validator.showMessageFor("website_url")}
             />
-            {this.validator.message(
-              "website_url",
-              this.state.website_url,
-              "required"
-            )}
-          </div>
-          <div className="submit-button d-block">
-            <input type="submit" value="Next" />
+            <div className="submit-button">
+              <Button type="submit" variant="contained" onClick={this.handleSubmit}>Next</Button>
+            </div>
           </div>
         </form>
       </div>
@@ -86,7 +90,13 @@ class Welcome extends Component {
   }
 }
 
-export default connect(
-  null,
-  { updateUser }
-)(Welcome);
+export const mapStateToProps = state => ({
+  user: state.user
+});
+
+export const mapDispatchToProps = dispatch => ({
+  setLoading: data => dispatch(actions.setLoading(data)),
+  updateUser: data => dispatch(actions.updateUser(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Welcome);

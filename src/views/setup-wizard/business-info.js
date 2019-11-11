@@ -1,10 +1,13 @@
 import React, { Component } from "react";
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { connect } from "react-redux";
+import * as actions from "../../redux/actions";
+
 import SimpleReactValidator from "simple-react-validator";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/dist/style.css";
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
-import { updateUser } from "../../redux/actions/user";
-import { connect } from "react-redux";
 
 class BusinessInfo extends Component {
   constructor(props) {
@@ -14,28 +17,20 @@ class BusinessInfo extends Component {
       address: "",
       state: "",
       zip: "",
-      country: ""
+      country: "United States"
     };
-
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleValueChange = this.handleValueChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
 
     this.validator = new SimpleReactValidator({ autoForceUpdate: this });
   }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-
+  handleInputChange = (event) => {
+    const { name, value } = event.target;
     this.setState({
       [name]: value
     });
   }
 
-  handleValueChange(name, value) {
-    console.log(value);
+  handleValueChange = (name, value) => {
     this.setState({
       [name]: value
     });
@@ -47,107 +42,102 @@ class BusinessInfo extends Component {
     }
   }
 
-  handleSubmit(event) {
+  handleSubmit = async (event) => {
     event.preventDefault();
-    if (this.validator.allValid()) {
-      this.props.updateUser(this.state);
+    const { phone_number, address, state, zip, country } = this.state;
+    const { user, updateUser, setLoading } = this.props;
+    // const url = "http://localhost:3000/api/v1/step2";
+    const url = "https://09v84ua8va.execute-api.us-east-1.amazonaws.com/dev/api/v1/step2";
+
+    const fetchOptions = {
+      method: "PUT",
+      body: JSON.stringify({ email: user.user.email, phone_number, address, state, zip, country }),
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    }
+
+    try {
+      setLoading(true);
+      const response = await fetch(url, fetchOptions)
+      console.log('response', response);
+      if(!response.ok) { throw new Error(`Fetch Call Cannot Be Made`)}
+      const data = await response.json();
+      console.log('data', data);
+      updateUser({ phone_number, address, state, zip, country })
+      setLoading(false);
       this.props.history.push("/setup-wizard/integration");
-    } else {
-      this.validator.showMessages();
+      return data;
+    } catch (error) {
+      console.log('error', error);
+      return error;
     }
   }
+
   render() {
     return (
-      <div className="business-info">
+      <div className="Business-Info wizard-content">
         <div className="page-title">
-          Hi {this.props.user.business_name}!<br />
           Just a little more information
         </div>
-        <form onSubmit={this.handleSubmit}>
-          <div className="row p-0">
-            <div className="form-group col-md">
-              <PhoneInput
-                autoFormat={false}
-                countryCodeEditable={false}
-                value={this.state.phone_number}
-                onChange={val => this.handleValueChange("phone_number", val)}
-                onBlur={() => this.validator.showMessageFor("phone_number")}
-                placeholder="Phone Number"
-              />
-              {this.validator.message(
-                "phone_number",
-                this.state.phone_number,
-                "required|min:10|max:120"
-              )}
+        <form onSubmit={this.handleSubmit} className="Wizard-Form">
+          <div className="Wizard-Input">
+            <PhoneInput
+              className="Input-Field"
+              autoFormat={false}
+              defaultCountry='us'
+              countryCodeEditable={false}
+              value={this.state.phone_number}
+              onChange={val => this.handleValueChange("phone_number", val)}
+              onBlur={() => this.validator.showMessageFor("phone_number")}
+              placeholder="Phone Number"
+            />
+            <TextField
+              id="outlined-basic"
+              label="Business Address"
+              margin="normal"
+              variant="outlined"
+              type="text"
+              name="address"
+              value={this.state.address}
+              onChange={this.handleInputChange}
+            />
+            <CountryDropdown
+              defaultOptionLabel="Country"
+              className={
+                this.state.country === "" || this.state.country === ""
+                  ? "placeholder"
+                  : ""
+              }
+              value={this.state.country}
+              onChange={val => this.handleValueChange("country", val)}
+            />
+            <RegionDropdown
+              ref={region => (this.regionSelection = region)}
+              blankOptionLabel="State"
+              defaultOptionLabel="State"
+              className={
+                this.state.state === "" || this.state.state === "State"
+                  ? "placeholder"
+                  : ""
+              }
+              country={this.state.country}
+              value={this.state.state}
+              onChange={val => this.handleValueChange("state", val)}
+            />
+            <TextField
+              id="outlined-basic"
+              label="Business Zip"
+              margin="normal"
+              variant="outlined"
+              type="text"
+              name="zip"
+              value={this.state.zip}
+              onChange={this.handleInputChange}
+            />
+            <div className="submit-button">
+              <Button type="submit" variant="contained" onClick={this.handleSubmit}>Next</Button>
             </div>
-            <div className="form-group col-md">
-              <input
-                type="text"
-                name="business address"
-                placeholder="Business Address"
-                value={this.state.address}
-                onChange={event =>
-                  this.handleValueChange("address", event.target.value)
-                }
-                onBlur={() => this.validator.showMessageFor("business address")}
-              />
-              {this.validator.message(
-                "business address",
-                this.state.address,
-                "required"
-              )}
-            </div>
-          </div>
-          <div className="row p-0">
-            <div className="form-group col-md">
-              <div className="form-select">
-                <RegionDropdown
-                  ref={region => (this.regionSelection = region)}
-                  blankOptionLabel="State"
-                  defaultOptionLabel="State"
-                  className={
-                    this.state.state === "" || this.state.state === "State"
-                      ? "placeholder"
-                      : ""
-                  }
-                  country={this.state.country}
-                  value={this.state.state}
-                  onChange={val => this.handleValueChange("state", val)}
-                />
-                {this.validator.message("state", this.state.state, "required")}
-              </div>
-              <div className="form-select">
-                <CountryDropdown
-                  defaultOptionLabel="Country"
-                  className={
-                    this.state.country === "" || this.state.country === ""
-                      ? "placeholder"
-                      : ""
-                  }
-                  value={this.state.country}
-                  onChange={val => this.handleValueChange("country", val)}
-                />
-                {this.validator.message(
-                  "country",
-                  this.state.country,
-                  "required"
-                )}
-              </div>
-            </div>
-            <div className="form-group col-md">
-              <input
-                type="text"
-                name="zip"
-                placeholder="Business Zip"
-                value={this.state.zip}
-                onChange={this.handleInputChange}
-                onBlur={() => this.validator.showMessageFor("zip")}
-              />
-              {this.validator.message("zip", this.state.zip, "required|min:5")}
-            </div>
-          </div>
-          <div className="submit-button d-block">
-            <input type="submit" value="Next" />
           </div>
         </form>
       </div>
@@ -155,11 +145,13 @@ class BusinessInfo extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.user.user
+export const mapStateToProps = state => ({
+  user: state.user
 });
 
-export default connect(
-  mapStateToProps,
-  { updateUser }
-)(BusinessInfo);
+export const mapDispatchToProps = dispatch => ({
+  setLoading: data => dispatch(actions.setLoading(data)),
+  updateUser: data => dispatch(actions.updateUser(data)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BusinessInfo);

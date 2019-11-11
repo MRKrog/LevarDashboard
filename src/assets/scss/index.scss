@@ -1,15 +1,16 @@
 /* Font Import */
 @import url("../fonts/Montserrat/Montserrat.css");
-@import url('https://fonts.googleapis.com/css?family=Abel|Lato:300,400|Oswald:300,400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Abel|Roboto:100,300,400|Oswald:300,400&display=swap');
 
 @import "variables/variables";
 @import "app/app";
 
 /* Wizard Styles */
 @import "app/auth";
-@import "app/setupWizard";
+// @import "app/setupWizard";
 @import "app/layouts/sidebar";
 @import "app/layouts/progressbar";
+@import "../../views/setup-wizard/setup-wizard";
 
 /* Drawer Styles */
 @import "../../views/SideBarDrawer/SideBarDrawer";

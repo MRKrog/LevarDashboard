@@ -7,6 +7,7 @@ import Progressbar from "../layouts/progressbar";
 class SetupWizard extends Component {
   render() {
     let path = "/setup-wizard";
+
     return (
       <>
         <Sidebar {...this.props} />

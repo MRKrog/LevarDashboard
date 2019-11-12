@@ -8,7 +8,17 @@ import { productsReducer } from "./productsReducer";
 import { authorizationReducer } from "./authorizationReducer";
 import { loginReducer } from "./loginReducers";
 
-export default combineReducers({
+// export default combineReducers({
+//   posts: postReducer,
+//   user: userReducer,
+//   loading: loadingReducer,
+//   isAuthenticated: loginReducer,
+//   products: productsReducer,
+//   authorization: authorizationReducer,
+//   email: emailReducer
+// });
+
+export const rootReducer = combineReducers({
   posts: postReducer,
   user: userReducer,
   loading: loadingReducer,
@@ -16,4 +26,4 @@ export default combineReducers({
   products: productsReducer,
   authorization: authorizationReducer,
   email: emailReducer
-});
+})

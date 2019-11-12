@@ -17,15 +17,15 @@ class Progressbar extends Component {
     // this.setStep = this.setStep.bind(this);
   }
 
-  componentWillMount() {
-    this.unlisten = this.props.history.listen((location, action) => {
-      this.setStep(location.pathname);
-    });
-  }
-
-  componentWillUnmount() {
-    this.unlisten();
-  }
+  // componentWillMount() {
+  //   this.unlisten = this.props.history.listen((location, action) => {
+  //     this.setStep(location.pathname);
+  //   });
+  // }
+  //
+  // componentWillUnmount() {
+  //   this.unlisten();
+  // }
 
   componentDidMount() {
     this.setStep(this.props.location.pathname);
